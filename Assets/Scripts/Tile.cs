@@ -10,7 +10,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private float _neighbourRayLength = 1.2f;
     [SerializeField] private float _punchPositionForce;
     [SerializeField] private float _punchPositionDuration;
-   
+
     private Tile[] _neighbors = new Tile[4];
     public Transform PlayerPosition => _playerPosition;
     public Tile[] Neighbors => _neighbors;
@@ -22,8 +22,10 @@ public class Tile : MonoBehaviour
 
     private void Update()
     {
-        if(!Application.isPlaying)
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
             FindNeighbours();
+#endif
     }
 
     private void FindNeighbours()
@@ -43,7 +45,7 @@ public class Tile : MonoBehaviour
         float maxDistance = _collider.bounds.extents.y * _neighbourRayLength;
         bool detectBlock = Physics.Raycast(transform.position, direction, out hit, maxDistance);
         Debug.DrawLine(transform.position, transform.position + direction * maxDistance, detectBlock ? Color.green : Color.red);
-        
+
         return detectBlock;
     }
 
@@ -61,7 +63,7 @@ public class Tile : MonoBehaviour
     }
 
     private Tween _punchPositionTween;
-    
+
     private void OnMouseDown()
     {
         GameCore.Instance.Player.Move(this);

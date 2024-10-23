@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Animator _animator;
     [SerializeField] private bool _snapPlayerToTile;
     [SerializeField] private float _maxTileRaycastDistance;
-    [SerializeField] private float _speed;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _rotationSpeed;
     
     private Tile _currentTile;
     private Collider _collider;
     private PathFinder _pathFinder;
-    private bool _isMoving;
 
     private void Awake()
     {
@@ -39,32 +40,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private Tween _moveTween;
-
+    private Sequence _moveSequence;
+    
     public void Move(Tile targetTile)
     {
-        if (_isMoving)
-            return;
+        _moveSequence?.Kill();
         
         List<Tile> path = _pathFinder.GetPath(_currentTile, targetTile);
 
         if (path.Count <= 0)
             return;
 
-        Sequence moveSequence = DOTween.Sequence();
+        _moveSequence = DOTween.Sequence();
+        _animator.SetBool($"IsWalking", true);
         
         foreach (Tile tile in path)
         {
             if (tile == _currentTile)
                 continue;
                 
+            _currentTile = tile;
             Vector3 target = tile.PlayerPosition.position;
             
-            moveSequence.Append(transform.DOMove(target, _speed).SetEase(Ease.Linear));
-            moveSequence.Join(transform.DOLookAt(target, _speed).SetEase(Ease.Linear));
-            
-            _currentTile = tile;
+            _moveSequence.Append(transform.DOMove(target, _moveSpeed).SetEase(Ease.Linear));
+            _moveSequence.Join(transform.DOLookAt(target, _rotationSpeed).SetEase(Ease.Linear));
         }
+        
+        _moveSequence.OnComplete(() => _animator.SetBool($"IsWalking", false));
     }
 
     private void OnDrawGizmos()
