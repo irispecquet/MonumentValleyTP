@@ -121,8 +121,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPosition: {fileID: 8252528971179600747}
   _collider: {fileID: 1970884863768684927}
+  _neighbourRayLength: 1.2
   _punchPositionForce: 0.15
   _punchPositionDuration: 0.2
+  _meshRenderer: {fileID: 3155625778347467968}
+  _materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 7205189804858053933, guid: 6edb8f0e9b7e2e4448dc183532a39af3, type: 3}
 --- !u!1 &6221530206867027355
 GameObject:
   m_ObjectHideFlags: 0

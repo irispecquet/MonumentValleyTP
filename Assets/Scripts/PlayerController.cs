@@ -1,4 +1,7 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -13,7 +16,8 @@ public class PlayerController : MonoBehaviour
     private Tile _currentTile;
     private Collider _collider;
     private PathFinder _pathFinder;
-
+    private bool _isMoving;
+    
     private void Awake()
     {
         _collider = GetComponent<Collider>();
@@ -22,59 +26,83 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, _maxTileRaycastDistance))
+        if(IsOnTile(out Tile tile))
         {
-            if (hit.collider.TryGetComponent(out Tile tile))
-            {
-                _currentTile = tile;
+            _currentTile = tile;
+            
+            if(_snapPlayerToTile)
                 transform.position = _currentTile.PlayerPosition.position;
-            }
-            else
-            {
-                Debug.LogError($"The player must be on a tile, not {hit.collider.gameObject.name}");
-            }
         }
         else
         {
             Debug.LogError($"The player must be on a tile!");
         }
     }
-
-    private Sequence _moveSequence;
     
+    private Vector3 GetRaycastOrigin()
+    {
+        return transform.position + Vector3.up * 0.1f;
+    }
+
+    private bool IsOnTile(out Tile tile)
+    {
+        tile = null;
+        bool isOnSomething = Physics.Raycast(GetRaycastOrigin(), -transform.up, out RaycastHit hit, _maxTileRaycastDistance);
+
+        if (isOnSomething)
+            return hit.collider.TryGetComponent(out tile);
+        
+        return false;
+    }
+
     public void Move(Tile targetTile)
     {
-        _moveSequence?.Kill();
-        
         List<Tile> path = _pathFinder.GetPath(_currentTile, targetTile);
 
-        if (path.Count <= 0)
+        if (path.Count <= 1)
             return;
 
-        _moveSequence = DOTween.Sequence();
         _animator.SetBool($"IsWalking", true);
+
+        _isMoving = true;
         
         foreach (Tile tile in path)
         {
             if (tile == _currentTile)
                 continue;
+        }
+    }
+    
+    private void EndMoving()
+    {
+        _animator.SetBool($"IsWalking", false);
+        _isMoving = false;
+    }
+
+    private void Update()
+    {
+        if (_isMoving)
+        {
+            if (!IsOnTile(out Tile tile)) 
+                return;
+            
+            if (tile != _currentTile)
+            {
+                _currentTile.RefreshMaterial(false);
+                tile.RefreshMaterial(true);
+            }
                 
             _currentTile = tile;
-            Vector3 target = tile.PlayerPosition.position;
-            
-            _moveSequence.Append(transform.DOMove(target, _moveSpeed).SetEase(Ease.Linear));
-            _moveSequence.Join(transform.DOLookAt(target, _rotationSpeed).SetEase(Ease.Linear));
         }
-        
-        _moveSequence.OnComplete(() => _animator.SetBool($"IsWalking", false));
     }
 
     private void OnDrawGizmos()
     {
         if (!Application.isPlaying)
         {
-            Gizmos.color = Physics.Raycast(transform.position, -transform.up, _maxTileRaycastDistance) ? Color.green : Color.red;
-            Gizmos.DrawLine(transform.position, transform.position + -transform.up * _maxTileRaycastDistance);
+            Gizmos.color = IsOnTile(out _) ? Color.green : Color.red;
+            Vector3 raycastOrigin = GetRaycastOrigin();
+            Gizmos.DrawLine(raycastOrigin, raycastOrigin + -transform.up * _maxTileRaycastDistance);
         }
     }
 }

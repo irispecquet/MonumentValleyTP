@@ -1255,6 +1255,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2611908284230966975, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 6937899396189562969, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1265,11 +1269,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7671895451957778349, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
       propertyPath: _moveSpeed
-      value: 0.6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7671895451957778349, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
-      propertyPath: _rotationSpeed
-      value: 0.1
+      propertyPath: _maxTileRaycastDistance
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7798413755392340518, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1277,7 +1281,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7798413755392340518, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: 0.568
       objectReference: {fileID: 0}
     - target: {fileID: 7798413755392340518, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
       propertyPath: m_LocalPosition.z

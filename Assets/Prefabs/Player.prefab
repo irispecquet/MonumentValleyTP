@@ -50,7 +50,8 @@ MonoBehaviour:
   _animator: {fileID: 5722245945564250731}
   _snapPlayerToTile: 1
   _maxTileRaycastDistance: 0.25
-  _speed: 0.2
+  _moveSpeed: 0.6
+  _rotationSpeed: 0.1
 --- !u!136 &5574085395060721268
 CapsuleCollider:
   m_ObjectHideFlags: 0
