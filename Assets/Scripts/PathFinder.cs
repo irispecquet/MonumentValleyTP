@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using IshLib.Pathfinding;
+using LuniLiiiib.Algorithms.Pathfinding.Dijkstra;
 using UnityEngine;
 
 public class PathFinder
