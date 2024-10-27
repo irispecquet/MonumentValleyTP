@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace LuniLib.UnityUtils
+namespace LuniLiiiib.UnityUtils
 {
 #if UNITY_EDITOR
 #endif

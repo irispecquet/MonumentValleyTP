@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LuniLib
+namespace LuniLiiiib
 {
     [DisallowMultipleComponent]
     public class LayoutGroupRebuilder : MonoBehaviour

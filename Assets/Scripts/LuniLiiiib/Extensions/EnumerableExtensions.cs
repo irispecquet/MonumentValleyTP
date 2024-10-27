@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace LuniLib.Extensions
+namespace LuniLiiiib.Extensions
 {
     public static class EnumerableExtensions
     {

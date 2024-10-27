@@ -1,4 +1,4 @@
-namespace LuniLib.Maths
+namespace LuniLiiiib.Maths
 {
     public static class Maths
     {

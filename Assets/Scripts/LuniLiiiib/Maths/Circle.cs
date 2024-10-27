@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LuniLib.Maths
+namespace LuniLiiiib.Maths
 {
     public static class Circle
     {

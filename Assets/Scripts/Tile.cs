@@ -11,15 +11,18 @@ public class Tile : MonoBehaviour
     [SerializeField] private float _punchPositionForce;
     [SerializeField] private float _punchPositionDuration;
     [SerializeField] private MeshRenderer _meshRenderer;
-    [SerializeField] private Material[] _materials;
+    [SerializeField] private Material _currentTileMaterial;
 
     private Tile[] _neighbors = new Tile[4];
     public Transform PlayerPosition => _playerPosition;
     public Tile[] Neighbors => _neighbors;
 
+    private Material _initTileMaterial;
+
     private void Start()
     {
         FindNeighbours();
+        _initTileMaterial = _meshRenderer.sharedMaterial;
     }
 
     private void Update()
@@ -32,7 +35,7 @@ public class Tile : MonoBehaviour
 
     public void RefreshMaterial(bool isCurrent)
     {
-        _meshRenderer.sharedMaterial = isCurrent ? _materials[1] : _materials[0];
+        _meshRenderer.sharedMaterial = isCurrent ? _currentTileMaterial : _initTileMaterial;
     }
 
     private void FindNeighbours()
@@ -73,7 +76,7 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        GameCore.Instance.Player.Move(this);
+        GameCore.Instance.Player.BeginMove(this);
 
         _punchPositionTween?.Complete();
         _punchPositionTween = transform.DOPunchPosition(Vector3.up * -_punchPositionForce, _punchPositionDuration, 0, 0);

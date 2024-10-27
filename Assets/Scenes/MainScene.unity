@@ -1255,25 +1255,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2611908284230966975, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
     - target: {fileID: 6937899396189562969, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671895451957778349, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
-      propertyPath: _speed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671895451957778349, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
-      propertyPath: _moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671895451957778349, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
-      propertyPath: _maxTileRaycastDistance
-      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7798413755392340518, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1332,6 +1316,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 2936757949539958255, guid: 0573c773e7689924e8b0336791fcd26e, type: 3}
+      propertyPath: _materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3bbe621ad195bfc47902e84935ad4019, type: 2}
+    - target: {fileID: 2936757949539958255, guid: 0573c773e7689924e8b0336791fcd26e, type: 3}
+      propertyPath: _materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 81c06ec9ce7ff7349a91704ef066132a, type: 2}
     - target: {fileID: 4682830913974596640, guid: 0573c773e7689924e8b0336791fcd26e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

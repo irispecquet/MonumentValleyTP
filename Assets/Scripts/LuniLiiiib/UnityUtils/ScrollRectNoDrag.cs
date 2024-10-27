@@ -1,4 +1,4 @@
-﻿namespace LuniLib.UnityUtils
+﻿namespace LuniLiiiib.UnityUtils
 {
     public class ScrollRectNoDrag : UnityEngine.UI.ScrollRect
     {

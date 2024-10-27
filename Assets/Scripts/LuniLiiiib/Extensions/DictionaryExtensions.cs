@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LuniLib.Extensions
+namespace LuniLiiiib.Extensions
 {
     public static class DictionaryExtensions
     {

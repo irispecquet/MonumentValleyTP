@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace LuniLib.UnityUtils
+namespace LuniLiiiib.UnityUtils
 {
     public class WaitForParallelCoroutines : CustomYieldInstruction
     {

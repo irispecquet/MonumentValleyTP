@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace View
+namespace LuniLiiiib.View
 {
     [CreateAssetMenu(fileName = "Animation", menuName = "2D Animation", order = 0)]
     public class AnimationData : ScriptableObject

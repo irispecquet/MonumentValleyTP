@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LuniLib.Maths
+namespace LuniLiiiib.Maths
 {
     /// <summary>
     /// Bowyer-Watson algorithm is a method for computing the Delaunay triangulation of a finite set of points.

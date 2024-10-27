@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace LuniLib.Helpers
+namespace LuniLiiiib.Helpers
 {
     [Serializable]
     public struct DecimalInt : IEquatable<DecimalInt>, IComparable<DecimalInt>, IComparable

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LuniLib.Extensions
+namespace LuniLiiiib.Extensions
 {
 	public static class RigidbodyExtensions
     {

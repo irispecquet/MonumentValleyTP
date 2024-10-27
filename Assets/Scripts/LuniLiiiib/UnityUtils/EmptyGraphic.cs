@@ -1,4 +1,4 @@
-﻿namespace LuniLib.UnityUtils
+﻿namespace LuniLiiiib.UnityUtils
 {
     /// <summary>
     /// Class that allows the creation of an empty Graphic, avoiding overdraw.

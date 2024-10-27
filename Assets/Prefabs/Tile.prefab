@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3bbe621ad195bfc47902e84935ad4019, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,9 +125,7 @@ MonoBehaviour:
   _punchPositionForce: 0.15
   _punchPositionDuration: 0.2
   _meshRenderer: {fileID: 3155625778347467968}
-  _materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 7205189804858053933, guid: 6edb8f0e9b7e2e4448dc183532a39af3, type: 3}
+  _currentTileMaterial: {fileID: 2100000, guid: 81c06ec9ce7ff7349a91704ef066132a, type: 2}
 --- !u!1 &6221530206867027355
 GameObject:
   m_ObjectHideFlags: 0
