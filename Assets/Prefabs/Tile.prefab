@@ -119,13 +119,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0bdc19ce971d4442b3c99e4eff5029f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPosition: {fileID: 8252528971179600747}
-  _collider: {fileID: 1970884863768684927}
   _neighbourRayLength: 1.2
   _punchPositionForce: 0.15
   _punchPositionDuration: 0.2
   _meshRenderer: {fileID: 3155625778347467968}
-  _currentTileMaterial: {fileID: 2100000, guid: 81c06ec9ce7ff7349a91704ef066132a, type: 2}
+  _highlightedMaterial: {fileID: 2100000, guid: 81c06ec9ce7ff7349a91704ef066132a, type: 2}
+  _playerPosition: {fileID: 8252528971179600747}
+  _collider: {fileID: 1970884863768684927}
 --- !u!1 &6221530206867027355
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,19 +1,19 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
 [ExecuteInEditMode]
 public class Tile : MonoBehaviour
 {
+    [SerializeField] private float _neighbourRayLength = 1.2f;
+    [SerializeField, Header("Tween")] private float _punchPositionForce;
+    [SerializeField] private float _punchPositionDuration;
+    [SerializeField, Header("References")] private MeshRenderer _meshRenderer;
+    [SerializeField] private Material _highlightedMaterial;
     [SerializeField] private Transform _playerPosition;
     [SerializeField] private Collider _collider;
-    [SerializeField] private float _neighbourRayLength = 1.2f;
-    [SerializeField] private float _punchPositionForce;
-    [SerializeField] private float _punchPositionDuration;
-    [SerializeField] private MeshRenderer _meshRenderer;
-    [SerializeField] private Material _currentTileMaterial;
 
-    private Tile[] _neighbors = new Tile[4];
+    public bool CanWalkOnIt = true;
+    private Tile[] _neighbors = new Tile[6];
     public Transform PlayerPosition => _playerPosition;
     public Tile[] Neighbors => _neighbors;
 
@@ -35,7 +35,7 @@ public class Tile : MonoBehaviour
 
     public void RefreshMaterial(bool isCurrent)
     {
-        _meshRenderer.sharedMaterial = isCurrent ? _currentTileMaterial : _initTileMaterial;
+        _meshRenderer.sharedMaterial = isCurrent ? _highlightedMaterial : _initTileMaterial;
     }
 
     private void FindNeighbours()
@@ -46,7 +46,7 @@ public class Tile : MonoBehaviour
             bool detectBlock = TryFindNeighbour(directions[index], out RaycastHit hit);
 
             if (detectBlock)
-                Neighbors[index] = hit.collider.GetComponent<Tile>();
+                _neighbors[index] = hit.collider.GetComponent<Tile>();
         }
     }
 
@@ -58,7 +58,7 @@ public class Tile : MonoBehaviour
 
         return detectBlock;
     }
-
+    
     private Vector3[] GetDirections()
     {
         Vector3[] directions =
@@ -66,7 +66,9 @@ public class Tile : MonoBehaviour
             transform.forward,
             transform.right,
             -transform.right,
-            -transform.forward
+            -transform.forward,
+            transform.up,
+            -transform.up,
         };
 
         return directions;

@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _maxTileRaycastDistance;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _rotationDuration;
-    
+
     private Tile _currentTile;
     private PathFinder _pathFinder;
     private bool _isMoving;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private Action<Vector3> _reachTargetTileEvent;
 
     #region UNITY METHODS
-    
+
     private void Awake()
     {
         _pathFinder = new PathFinder();
@@ -31,11 +31,11 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        if(IsOnTile(out Tile tile))
+        if (IsOnTile(out Tile tile))
         {
             _currentTile = tile;
-            
-            if(_snapPlayerToTile)
+
+            if (_snapPlayerToTile)
                 transform.position = _currentTile.PlayerPosition.position;
         }
         else
@@ -44,22 +44,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-        private void Update()
+    private void Update()
     {
         RefreshCurrentTile();
     }
-    
+
     private void FixedUpdate()
     {
-        if(_isMoving)
+        if (_isMoving)
             Move();
     }
 
     #endregion
-    
+
     private Vector3 GetRaycastOrigin()
     {
-        return transform.position + Vector3.up * 0.1f;
+        return transform.position + new Vector3(0, 1, -1) * 0.1f;
     }
 
     private bool IsOnTile(out Tile tile)
@@ -69,53 +69,71 @@ public class PlayerController : MonoBehaviour
 
         if (isOnSomething)
             return hit.collider.TryGetComponent(out tile);
-        
+
+        return false;
+    }
+    
+    private bool IsAgainstTile(out Tile tile)
+    {
+        tile = null;
+        bool isAgainstSomething = Physics.Raycast(GetRaycastOrigin(), transform.forward, out RaycastHit hit, _maxTileRaycastDistance);
+
+        if (isAgainstSomething)
+            return hit.collider.TryGetComponent(out tile);
+
         return false;
     }
 
     public void BeginMove(Tile targetTile)
     {
         List<Tile> path = _pathFinder.GetPath(_currentTile, targetTile);
-        
+
         if (path.Count <= 1)
             return;
 
         int startingIndex = 1;
-        
+
         _targetPath = new List<Tile>(path);
-        this._targetTile = (path[startingIndex], startingIndex); 
+        _targetTile = (path[startingIndex], startingIndex);
+
         _animator.SetBool($"IsWalking", true);
-        Turn(path[startingIndex].PlayerPosition.position);
-        _reachTargetTileEvent += Turn;
+        
+        // Turn(path[startingIndex].PlayerPosition.position);
+        // _reachTargetTileEvent += Turn;
+        
         _isMoving = true;
     }
-    
+
     private void Move()
     {
-        if (_targetTile.index < _targetPath.Count)
+        if (_targetTile.index >= _targetPath.Count)
+            return;
+
+        Vector3 targetPosition = _targetTile.tile.PlayerPosition.position;
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, _moveSpeed * Time.fixedDeltaTime);
+
+        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
-            Vector3 targetPosition = _targetTile.tile.PlayerPosition.position;
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, _moveSpeed * Time.fixedDeltaTime);
+            int index = _targetTile.index + 1;
 
-            if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+            if (index < _targetPath.Count)
             {
-                int index = _targetTile.index + 1;
-
-                if (index < _targetPath.Count)
-                {
-                    _targetTile = (_targetPath[index], index);
-                    _reachTargetTileEvent?.Invoke(_targetTile.tile.PlayerPosition.position);
-                }
-                else
-                    EndMoving();                    
+                _targetTile = (_targetPath[index], index);
+                _reachTargetTileEvent?.Invoke(_targetTile.tile.transform.position);
             }
+            else
+                EndMoving();
         }
     }
 
     private void Turn(Vector3 lookAtPoint)
     {
+        Vector3 direction = lookAtPoint - transform.position;
+        direction.y = 0; // Ensure the rotation is only around the y-axis
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
         _rotationTween?.Complete();
-        _rotationTween = transform.DOLookAt(lookAtPoint, _rotationDuration);
+        _rotationTween = transform.DOLocalRotateQuaternion(targetRotation, _rotationDuration);
     }
 
     private void EndMoving()
@@ -123,38 +141,33 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool($"IsWalking", false);
         _reachTargetTileEvent -= Turn;
         _isMoving = false;
-        
+
         _targetPath = null;
-        _targetTile = (null, 0); 
+        _targetTile = (null, 0);
     }
 
     private void RefreshCurrentTile()
     {
-        if (_isMoving)
+        if (!IsOnTile(out Tile tile) && !IsAgainstTile(out tile))
+            return;
+
+        if (tile != _currentTile)
         {
-            if (!IsOnTile(out Tile tile))
-                return;
-
-            if (tile != _currentTile)
-            {
-                _currentTile.RefreshMaterial(false);
-                tile.RefreshMaterial(true);
-            }
-
-            _currentTile = tile;
+            _currentTile.RefreshMaterial(false);
+            tile.RefreshMaterial(true);
         }
+
+        _currentTile = tile;
     }
 
     #region DEBUG
 
     private void OnDrawGizmos()
     {
-        if (!Application.isPlaying)
-        {
-            Gizmos.color = IsOnTile(out _) ? Color.green : Color.red;
-            Vector3 raycastOrigin = GetRaycastOrigin();
-            Gizmos.DrawLine(raycastOrigin, raycastOrigin + -transform.up * _maxTileRaycastDistance);
-        }
+        Gizmos.color = IsOnTile(out _) ? Color.green : Color.red;
+        Vector3 raycastOrigin = GetRaycastOrigin();
+        Gizmos.DrawLine(raycastOrigin, raycastOrigin + -transform.up * _maxTileRaycastDistance);
+        Gizmos.DrawLine(raycastOrigin, raycastOrigin + transform.forward * _maxTileRaycastDistance);
     }
 
     #endregion
