@@ -79,10 +79,13 @@ public class PlayerController : MonoBehaviour
         
         if (path.Count <= 1)
             return;
+
+        int startingIndex = 1;
         
         _targetPath = new List<Tile>(path);
-        this._targetTile = (path[0], 0); 
+        this._targetTile = (path[startingIndex], startingIndex); 
         _animator.SetBool($"IsWalking", true);
+        Turn(path[startingIndex].PlayerPosition.position);
         _reachTargetTileEvent += Turn;
         _isMoving = true;
     }
