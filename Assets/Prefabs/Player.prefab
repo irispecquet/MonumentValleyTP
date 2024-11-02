@@ -49,7 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 5722245945564250731}
   _snapPlayerToTile: 1
-  _maxTileRaycastDistance: 0.25
+  _downRayDistance: 0.15
+  _forwardRayDistance: 0.35
   _moveSpeed: 3
   _rotationDuration: 0.2
 --- !u!136 &5574085395060721268

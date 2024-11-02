@@ -1569,14 +1569,6 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7671895451957778349, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
-      propertyPath: _downRayDistance
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671895451957778349, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
-      propertyPath: _forwardRayDistance
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671895451957778349, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
       propertyPath: _maxTileRaycastDistance
       value: 0.31
       objectReference: {fileID: 0}
