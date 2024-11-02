@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DG.Tweening;
 using JetBrains.Annotations;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
+    [SerializeField, FoldoutGroup("References")]
+    private Animator _animator;
+
     [SerializeField] private bool _snapPlayerToTile;
-    [SerializeField] private float _maxTileRaycastDistance;
+    [SerializeField] private float _downRayDistance;
+    [SerializeField] private float _forwardRayDistance;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _rotationDuration;
 
@@ -21,6 +25,10 @@ public class PlayerController : MonoBehaviour
     private List<Tile> _targetPath;
     private (Tile tile, int index) _targetTile;
     private Action<Vector3> _reachTargetTileEvent;
+    
+    private static readonly int IsWalking = Animator.StringToHash("IsWalking");
+    private static readonly int IsClimbing = Animator.StringToHash("IsClimbing");
+    private static readonly int IsAgainstWall = Animator.StringToHash("IsAgainstTile");
 
     #region UNITY METHODS
 
@@ -57,7 +65,9 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    private Vector3 GetRaycastOrigin()
+    #region TILE_CHECK
+
+    private Vector3 GetOrigin()
     {
         return transform.position + new Vector3(0, 1, -1) * 0.1f;
     }
@@ -65,24 +75,28 @@ public class PlayerController : MonoBehaviour
     private bool IsOnTile(out Tile tile)
     {
         tile = null;
-        bool isOnSomething = Physics.Raycast(GetRaycastOrigin(), -transform.up, out RaycastHit hit, _maxTileRaycastDistance);
+        bool isOnSomething = Physics.Raycast(GetOrigin(), -transform.up, out RaycastHit hit, _downRayDistance);
 
         if (isOnSomething)
             return hit.collider.TryGetComponent(out tile);
 
         return false;
     }
-    
+
     private bool IsAgainstTile(out Tile tile)
     {
         tile = null;
-        bool isAgainstSomething = Physics.Raycast(GetRaycastOrigin(), transform.forward, out RaycastHit hit, _maxTileRaycastDistance);
+        bool isAgainstSomething = Physics.Raycast(GetOrigin(), transform.forward, out RaycastHit hit, _forwardRayDistance);
 
         if (isAgainstSomething)
             return hit.collider.TryGetComponent(out tile);
 
         return false;
     }
+
+    #endregion // TILE_CHECK
+
+    #region MOVEMENT
 
     public void BeginMove(Tile targetTile)
     {
@@ -96,11 +110,12 @@ public class PlayerController : MonoBehaviour
         _targetPath = new List<Tile>(path);
         _targetTile = (path[startingIndex], startingIndex);
 
-        _animator.SetBool($"IsWalking", true);
-        
-        // Turn(path[startingIndex].PlayerPosition.position);
-        // _reachTargetTileEvent += Turn;
-        
+        _animator.SetBool(IsWalking, !_targetTile.tile.IsLadder);
+        _animator.SetBool(IsClimbing, _targetTile.tile.IsLadder);
+
+        Turn(path[startingIndex].PlayerPosition.position);
+        _reachTargetTileEvent += Turn;
+
         _isMoving = true;
     }
 
@@ -112,13 +127,14 @@ public class PlayerController : MonoBehaviour
         Vector3 targetPosition = _targetTile.tile.PlayerPosition.position;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, _moveSpeed * Time.fixedDeltaTime);
 
-        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+        if (Vector3.Distance(transform.position, targetPosition) < 0.05f)
         {
             int index = _targetTile.index + 1;
 
             if (index < _targetPath.Count)
             {
                 _targetTile = (_targetPath[index], index);
+                _animator.SetBool(IsClimbing, _targetTile.tile.IsLadder);
                 _reachTargetTileEvent?.Invoke(_targetTile.tile.transform.position);
             }
             else
@@ -138,13 +154,19 @@ public class PlayerController : MonoBehaviour
 
     private void EndMoving()
     {
-        _animator.SetBool($"IsWalking", false);
+        _animator.SetBool(IsAgainstWall, IsAgainstTile(out _));
+        
+        _animator.SetBool(IsWalking, false);
+        _animator.SetBool(IsClimbing, false);
+            
         _reachTargetTileEvent -= Turn;
         _isMoving = false;
 
         _targetPath = null;
         _targetTile = (null, 0);
     }
+
+    #endregion // MOVEMENT
 
     private void RefreshCurrentTile()
     {
@@ -165,9 +187,10 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = IsOnTile(out _) ? Color.green : Color.red;
-        Vector3 raycastOrigin = GetRaycastOrigin();
-        Gizmos.DrawLine(raycastOrigin, raycastOrigin + -transform.up * _maxTileRaycastDistance);
-        Gizmos.DrawLine(raycastOrigin, raycastOrigin + transform.forward * _maxTileRaycastDistance);
+        Vector3 raycastOrigin = GetOrigin();
+        Gizmos.DrawLine(raycastOrigin, raycastOrigin + -transform.up * _downRayDistance);
+        Gizmos.color = IsAgainstTile(out _) ? Color.green : Color.red;
+        Gizmos.DrawLine(raycastOrigin, raycastOrigin + transform.forward * _forwardRayDistance);
     }
 
     #endregion

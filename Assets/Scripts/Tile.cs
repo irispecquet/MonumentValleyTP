@@ -1,36 +1,43 @@
+using System.Collections.Generic;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-[ExecuteInEditMode]
-public class Tile : MonoBehaviour
+public class Tile : SerializedMonoBehaviour
 {
     [SerializeField] private float _neighbourRayLength = 1.2f;
-    [SerializeField, Header("Tween")] private float _punchPositionForce;
-    [SerializeField] private float _punchPositionDuration;
-    [SerializeField, Header("References")] private MeshRenderer _meshRenderer;
-    [SerializeField] private Material _highlightedMaterial;
-    [SerializeField] private Transform _playerPosition;
-    [SerializeField] private Collider _collider;
+    
+    [SerializeField, FoldoutGroup("Tween")] private float _punchPositionForce;
+    [SerializeField, FoldoutGroup("Tween")] private float _punchPositionDuration;
+    
+    [SerializeField, FoldoutGroup("References")] private MeshRenderer _meshRenderer;
+    [SerializeField, FoldoutGroup("References")] private Material _highlightedMaterial;
+    [SerializeField, FoldoutGroup("References")] private Transform _playerPosition;
+    [SerializeField, FoldoutGroup("References")] private Collider _collider;
+    [SerializeField, FoldoutGroup("References")] private bool _chooseNeighbours;
+    [SerializeField, ShowIf(nameof(_chooseNeighbours)), FoldoutGroup("References"), 
+     Tooltip("If you want to attribute specific neighbours to specific directions, you can do it here. All the null values will be filled automatically.")]
+    private Dictionary<Vector3, Tile> _neighbors = new Dictionary<Vector3, Tile>();
 
-    public bool CanWalkOnIt = true;
-    private Tile[] _neighbors = new Tile[6];
     public Transform PlayerPosition => _playerPosition;
-    public Tile[] Neighbors => _neighbors;
+    public Dictionary<Vector3, Tile> Neighbors => _neighbors;
+
+    public bool IsLadder => _isLadder;
 
     private Material _initTileMaterial;
+    private bool _isLadder;
 
     private void Start()
     {
         FindNeighbours();
+        SetLadder();
         _initTileMaterial = _meshRenderer.sharedMaterial;
     }
 
-    private void Update()
+    private void SetLadder()
     {
-#if UNITY_EDITOR
-        if (!Application.isPlaying)
-            FindNeighbours();
-#endif
+        if(_neighbors.TryGetValue(Vector3.up, out _))
+            _isLadder = true;
     }
 
     public void RefreshMaterial(bool isCurrent)
@@ -38,15 +45,20 @@ public class Tile : MonoBehaviour
         _meshRenderer.sharedMaterial = isCurrent ? _highlightedMaterial : _initTileMaterial;
     }
 
+    #region NEIGHBOURS
+
     private void FindNeighbours()
     {
         Vector3[] directions = GetDirections();
-        for (int index = 0; index < directions.Length; index++)
+        foreach (Vector3 direction in directions)
         {
-            bool detectBlock = TryFindNeighbour(directions[index], out RaycastHit hit);
+            bool detectBlock = TryFindNeighbour(direction, out RaycastHit hit);
 
             if (detectBlock)
-                _neighbors[index] = hit.collider.GetComponent<Tile>();
+            {
+                Tile tile = hit.collider.GetComponent<Tile>();
+                _neighbors.TryAdd(direction, tile);
+            }
         }
     }
 
@@ -58,7 +70,7 @@ public class Tile : MonoBehaviour
 
         return detectBlock;
     }
-    
+
     private Vector3[] GetDirections()
     {
         Vector3[] directions =
@@ -73,6 +85,8 @@ public class Tile : MonoBehaviour
 
         return directions;
     }
+
+    #endregion // NEIGHBOURS
 
     private Tween _punchPositionTween;
 
