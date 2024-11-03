@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Tile : SerializedMonoBehaviour
 {
+    #region VARIABLES
+
     [SerializeField] private float _neighbourRayLength = 1.2f;
     
     [SerializeField, FoldoutGroup("Tween")] private float _punchPositionForce;
@@ -13,6 +15,7 @@ public class Tile : SerializedMonoBehaviour
     [SerializeField, FoldoutGroup("References")] private MeshRenderer _meshRenderer;
     [SerializeField, FoldoutGroup("References")] private Material _highlightedMaterial;
     [SerializeField, FoldoutGroup("References")] private Transform _playerPosition;
+    [SerializeField, FoldoutGroup("References")] private Transform _playerLookAt;
     [SerializeField, FoldoutGroup("References")] private Collider _collider;
     [SerializeField, FoldoutGroup("References")] private bool _chooseNeighbours;
     [SerializeField, ShowIf(nameof(_chooseNeighbours)), FoldoutGroup("References"), 
@@ -21,11 +24,13 @@ public class Tile : SerializedMonoBehaviour
 
     public Transform PlayerPosition => _playerPosition;
     public Dictionary<Vector3, Tile> Neighbors => _neighbors;
-
     public bool IsLadder => _isLadder;
+    public Transform PlayerLookAt => _playerLookAt;
 
     private Material _initTileMaterial;
     private bool _isLadder;
+
+    #endregion // VARIABLES
 
     private void Start()
     {
@@ -65,7 +70,12 @@ public class Tile : SerializedMonoBehaviour
     private bool TryFindNeighbour(Vector3 direction, out RaycastHit hit)
     {
         float maxDistance = _collider.bounds.extents.y * _neighbourRayLength;
-        bool detectBlock = Physics.Raycast(transform.position, direction, out hit, maxDistance);
+        bool detectSomething = Physics.Raycast(transform.position, direction, out hit, maxDistance);
+        bool detectBlock = false;
+        
+        if(detectSomething)
+            detectBlock = hit.collider.TryGetComponent(out Tile _);
+        
         Debug.DrawLine(transform.position, transform.position + direction * maxDistance, detectBlock ? Color.green : Color.red);
 
         return detectBlock;

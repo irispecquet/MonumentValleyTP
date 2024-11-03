@@ -127,25 +127,25 @@ public class PlayerController : MonoBehaviour
         Vector3 targetPosition = _targetTile.tile.PlayerPosition.position;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, _moveSpeed * Time.fixedDeltaTime);
 
-        if (Vector3.Distance(transform.position, targetPosition) < 0.05f)
-        {
-            int index = _targetTile.index + 1;
+        if (!(Vector3.Distance(transform.position, targetPosition) < 0.05f)) 
+            return;
+        
+        int index = _targetTile.index + 1;
 
-            if (index < _targetPath.Count)
-            {
-                _targetTile = (_targetPath[index], index);
-                _animator.SetBool(IsClimbing, _targetTile.tile.IsLadder);
-                _reachTargetTileEvent?.Invoke(_targetTile.tile.transform.position);
-            }
-            else
-                EndMoving();
+        if (index < _targetPath.Count)
+        {
+            _targetTile = (_targetPath[index], index);
+            _animator.SetBool(IsClimbing, _targetTile.tile.IsLadder);
+            _reachTargetTileEvent?.Invoke(_targetTile.tile.PlayerLookAt.position);
         }
+        else
+            EndMoving();
     }
 
     private void Turn(Vector3 lookAtPoint)
     {
         Vector3 direction = lookAtPoint - transform.position;
-        direction.y = 0; // Ensure the rotation is only around the y-axis
+        direction.y = 0;
 
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         _rotationTween?.Complete();

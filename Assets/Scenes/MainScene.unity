@@ -233,7 +233,6 @@ Transform:
   - {fileID: 476481624}
   - {fileID: 1972641993}
   - {fileID: 630643057}
-  - {fileID: 530424179}
   m_Father: {fileID: 962914497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &285028909
@@ -363,11 +362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb587ed1ff2005548831cc3749668310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &530424179 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7798413755392340518, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
-  m_PrefabInstance: {fileID: 1540100463489166905}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &596676994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1546,7 +1540,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 160732735}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2611908284230966975, guid: 486a5c8782d10c3488c8a69793977e77, type: 3}
       propertyPath: m_UseGravity
@@ -1794,5 +1788,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 963194228}
   - {fileID: 705507995}
+  - {fileID: 1540100463489166905}
   - {fileID: 962914497}
   - {fileID: 506646944}
