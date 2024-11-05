@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -7,12 +8,14 @@ public class Tile : SerializedMonoBehaviour
 {
     #region VARIABLES
 
-    [SerializeField] private float _neighbourRayLength = 1.2f;
+    [SerializeField] private float _horizontalNeighbourRayLength = 1.2f;
+    [SerializeField] private float _verticalNeighbourRayLength = 1.2f;
     
     [SerializeField, FoldoutGroup("Tween")] private float _punchPositionForce;
     [SerializeField, FoldoutGroup("Tween")] private float _punchPositionDuration;
     
     [SerializeField, FoldoutGroup("References")] private MeshRenderer _meshRenderer;
+    [SerializeField, FoldoutGroup("References")] private Transform _neighbourDetectionTransform;
     [SerializeField, FoldoutGroup("References")] private Material _highlightedMaterial;
     [SerializeField, FoldoutGroup("References")] private Transform _playerPosition;
     [SerializeField, FoldoutGroup("References")] private Transform _playerLookAt;
@@ -69,15 +72,13 @@ public class Tile : SerializedMonoBehaviour
 
     private bool TryFindNeighbour(Vector3 direction, out RaycastHit hit)
     {
-        float maxDistance = _collider.bounds.extents.y * _neighbourRayLength;
-        bool detectSomething = Physics.Raycast(transform.position, direction, out hit, maxDistance);
+        float maxDistance = direction.y != 0 ? _verticalNeighbourRayLength : _horizontalNeighbourRayLength;
+        bool detectSomething = Physics.Raycast(_neighbourDetectionTransform.position, direction, out hit, maxDistance);
         bool detectBlock = false;
         
         if(detectSomething)
             detectBlock = hit.collider.TryGetComponent(out Tile _);
         
-        Debug.DrawLine(transform.position, transform.position + direction * maxDistance, detectBlock ? Color.green : Color.red);
-
         return detectBlock;
     }
 
@@ -106,5 +107,15 @@ public class Tile : SerializedMonoBehaviour
 
         _punchPositionTween?.Complete();
         _punchPositionTween = transform.DOPunchPosition(Vector3.up * -_punchPositionForce, _punchPositionDuration, 0, 0);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Vector3[] directions = GetDirections();
+        foreach (Vector3 direction in directions)
+        {
+            float maxDistance = direction.y != 0 ? _verticalNeighbourRayLength : _horizontalNeighbourRayLength;   
+            Gizmos.DrawLine(_neighbourDetectionTransform.position, _neighbourDetectionTransform.position + direction * maxDistance);
+        }
     }
 }
