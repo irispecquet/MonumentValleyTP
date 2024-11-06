@@ -55,7 +55,7 @@ public class Tile : SerializedMonoBehaviour
 
     #region NEIGHBOURS
 
-    private void FindNeighbours()
+    public void FindNeighbours()
     {
         Vector3[] directions = GetDirections();
         foreach (Vector3 direction in directions)
@@ -63,10 +63,7 @@ public class Tile : SerializedMonoBehaviour
             bool detectBlock = TryFindNeighbour(direction, out RaycastHit hit);
 
             if (detectBlock)
-            {
-                Tile tile = hit.collider.GetComponent<Tile>();
-                _neighbors.TryAdd(direction, tile);
-            }
+                _neighbors.TryAdd(direction, hit.collider.GetComponent<Tile>());
         }
     }
 
@@ -80,6 +77,11 @@ public class Tile : SerializedMonoBehaviour
             detectBlock = hit.collider.TryGetComponent(out Tile _);
         
         return detectBlock;
+    }
+    
+    public void SetNeighbour(Vector3 direction, Tile neighbour)
+    {
+        _neighbors[direction] = neighbour;
     }
 
     private Vector3[] GetDirections()
