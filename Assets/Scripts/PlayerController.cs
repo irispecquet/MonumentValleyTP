@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool(IsWalking, !_targetTile.tile.IsLadder);
         _animator.SetBool(IsClimbing, _targetTile.tile.IsLadder);
 
-        Turn(path[startingIndex].PlayerPosition.position);
+        Turn(path[startingIndex].PlayerLookAt.position);
         _reachTargetTileEvent += Turn;
 
         _isMoving = true;
@@ -155,7 +155,6 @@ public class PlayerController : MonoBehaviour
     private void EndMoving()
     {
         _animator.SetBool(IsAgainstWall, IsAgainstTile(out _));
-        
         _animator.SetBool(IsWalking, false);
         _animator.SetBool(IsClimbing, false);
             
