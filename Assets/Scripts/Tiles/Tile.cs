@@ -23,15 +23,15 @@ public class Tile : SerializedMonoBehaviour
     [SerializeField, FoldoutGroup("References")] private bool _chooseNeighbours;
     [SerializeField, ShowIf(nameof(_chooseNeighbours)), FoldoutGroup("References"), 
      Tooltip("If you want to attribute specific neighbours to specific directions, you can do it here. All the null values will be filled automatically.")]
-    private Dictionary<Vector3, Tile> _neighbors = new Dictionary<Vector3, Tile>();
+    private Dictionary<Vector3, Tile> _neighbors = new();
 
+    public bool IsLadder { get; private set; }
+    public bool IsOccupied { get; private set; }
     public Transform PlayerPosition => _playerPosition;
     public Dictionary<Vector3, Tile> Neighbors => _neighbors;
-    public bool IsLadder => _isLadder;
     public Transform PlayerLookAt => _playerLookAt;
 
     private Material _initTileMaterial;
-    private bool _isLadder;
 
     #endregion // VARIABLES
 
@@ -45,11 +45,12 @@ public class Tile : SerializedMonoBehaviour
     private void SetLadder()
     {
         if(_neighbors.TryGetValue(Vector3.up, out _))
-            _isLadder = true;
+            IsLadder = true;
     }
 
-    public void RefreshMaterial(bool isCurrent)
+    public void OnBeingCurrentTile(bool isCurrent)
     {
+        IsOccupied = isCurrent;
         _meshRenderer.sharedMaterial = isCurrent ? _highlightedMaterial : _initTileMaterial;
     }
 
@@ -81,19 +82,27 @@ public class Tile : SerializedMonoBehaviour
     
     public void SetNeighbour(Vector3 direction, Tile neighbour)
     {
+        if (neighbour == null)
+            _neighbors.Remove(direction);
+            
         _neighbors[direction] = neighbour;
+    }
+
+    public void ClearNeighbours()
+    {
+        _neighbors.Clear();
     }
 
     private Vector3[] GetDirections()
     {
         Vector3[] directions =
         {
-            transform.forward,
-            transform.right,
-            -transform.right,
-            -transform.forward,
-            transform.up,
-            -transform.up,
+            transform.localToWorldMatrix.MultiplyVector(Vector3.forward),
+            transform.localToWorldMatrix.MultiplyVector(Vector3.right),
+            transform.localToWorldMatrix.MultiplyVector(Vector3.up),
+            -transform.localToWorldMatrix.MultiplyVector(Vector3.forward),
+            -transform.localToWorldMatrix.MultiplyVector(Vector3.right),
+            -transform.localToWorldMatrix.MultiplyVector(Vector3.up),
         };
 
         return directions;

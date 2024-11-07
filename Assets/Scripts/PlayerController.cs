@@ -174,8 +174,8 @@ public class PlayerController : MonoBehaviour
 
         if (tile != _currentTile)
         {
-            _currentTile.RefreshMaterial(false);
-            tile.RefreshMaterial(true);
+            _currentTile.OnBeingCurrentTile(false);
+            tile.OnBeingCurrentTile(true);
         }
 
         _currentTile = tile;

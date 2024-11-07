@@ -1,56 +1,151 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Tiles
 {
     public class RotatingTileGroup : TileGroup
     {
-        [SerializeField] private Dictionary<CardinalDirection, List<DynamicNeighborTile>> _endTiles = new Dictionary<CardinalDirection, List<DynamicNeighborTile>>();
+        [SerializeField] private Dictionary<CardinalDirection, List<DynamicNeighborTile>> _endTiles = new();
         [SerializeField] private Transform _pivotPoint;
         [SerializeField] private float _rotationSpeed = 10f;
+        [SerializeField] private float _automaticRotationSpeed = 1f;
+        [SerializeField] private RotatingTileTool _rotatingTileTool;
         
         private CardinalDirection _currentDirection;
         private Vector3 _initialMousePosition;
         private bool _isDragging;
+        private Tween _rotationTween;
+
+        private Dictionary<CardinalDirection, float> _rotationAngles = new()
+        {
+            { CardinalDirection.North, 0 },
+            { CardinalDirection.East, 90 },
+            { CardinalDirection.South, 180 },
+            { CardinalDirection.West, 270 },
+        };
 
         private void Start()
         {
-            _currentDirection = CardinalDirection.North;
+            SetCurrentDirection(GetClosestCardinalDirection());
+            
+            _tiles = new List<Tile>(GetComponentsInChildren<Tile>());
+
+            if (_rotatingTileTool != null)
+            {
+                _rotatingTileTool.BeginClickEvent += OnToolBeginClick;
+                _rotatingTileTool.ClickEvent += OnToolClick;
+                _rotatingTileTool.EndClickEvent += OnToolEndClick;
+            }
         }
 
-        private void OnMouseDown()
+        #region ROTATION EVENTS
+
+        private void OnToolBeginClick(Vector3 mousePosition)
         {
-            _initialMousePosition = Input.mousePosition;
+            if (!CanRotate())
+                return;
+            
+            _initialMousePosition = mousePosition;
             _isDragging = true;
         }
 
-        private void OnMouseDrag()
+        private void OnToolClick(Vector3 mousePosition)
         {
             if (!_isDragging) return;
 
-            Vector3 currentMousePosition = Input.mousePosition;
-            Vector3 mouseDelta = currentMousePosition - _initialMousePosition;
-
-            float rotationAngle = mouseDelta.x * _rotationSpeed; // Adjust this to control sensitivity
-            _pivotPoint.Rotate(Vector3.up, rotationAngle * Time.deltaTime);
-
-            _initialMousePosition = currentMousePosition;
+            Rotate(mousePosition);
         }
-        
-        private void OnMouseUp()
+
+        private void OnToolEndClick()
         {
             _isDragging = false;
-            RotateClockwise();
+            EndRotation(_automaticRotationSpeed);
         }
 
-        private void RotateClockwise()
+        #endregion // ROTATION EVENTS
+
+        #region ROTATION
+
+        private void Rotate(Vector3 mousePosition)
         {
-            _currentDirection = (CardinalDirection)(((int)_currentDirection + 1) % 4);
+            Vector3 currentMousePosition = mousePosition;
+            Vector3 mouseDelta = currentMousePosition - _initialMousePosition;
+
+            float rotationAngle = mouseDelta.x * _rotationSpeed;
             
+            _pivotPoint.Rotate(Vector3.up, rotationAngle * Time.deltaTime);
+            _initialMousePosition = currentMousePosition;
+        }
+
+        private void EndRotation(float tweenSpeed)
+        {
+            _rotationTween?.Complete();
+            
+            CardinalDirection newCardinalDirection = GetClosestCardinalDirection();
+            Vector3 targetValue = Vector3.up * _rotationAngles[newCardinalDirection];
+            
+            _rotationTween = _pivotPoint.DORotate(targetValue, tweenSpeed).OnComplete(() => { SetCurrentDirection(newCardinalDirection); });
+        }
+
+        private void SetCurrentDirection(CardinalDirection newCardinalDirection)
+        {
+            _currentDirection = newCardinalDirection;
+
             foreach (DynamicNeighborTile endTile in _endTiles[_currentDirection])
                 endTile.SetNeighbourTile();
+        }
+
+        #endregion // ROTATION
+
+        [Button]
+        public void RotateClockwise()
+        {
+            _pivotPoint.Rotate(Vector3.up, 90);
+        }
+
+        private bool CanRotate()
+        {
+            foreach (Tile tile in _tiles)
+            {
+                if (tile.IsOccupied)
+                    return false;
+            }
+
+            return true;
+        }
+
+        private CardinalDirection GetClosestCardinalDirection()
+        {
+            float currentAngle = _pivotPoint.eulerAngles.y;
+            float minDistance = 360;
+            CardinalDirection cardinalDirection = CardinalDirection.North;
+
+            foreach ((CardinalDirection dir, float angle) in _rotationAngles)
+            {
+                float distance = Mathf.Abs(Mathf.DeltaAngle(currentAngle, angle));
+
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    cardinalDirection = dir;
+                }
+            }
+
+            return cardinalDirection;
+        }
+
+
+        private void OnDestroy()
+        {
+            if (_rotatingTileTool != null)
+            {
+                _rotatingTileTool.BeginClickEvent -= OnToolBeginClick;
+                _rotatingTileTool.ClickEvent -= OnToolClick;
+                _rotatingTileTool.EndClickEvent -= OnToolEndClick;
+            }
         }
     }
 
@@ -64,20 +159,26 @@ namespace Tiles
 
         public void SetNeighbourTile()
         {
+            GameCore.Instance.RefreshTilesNeighbours();
+                    
+            Tile.ClearNeighbours();
+            Tile.FindNeighbours();
             Tile.SetNeighbour(NeighbourDirection, Neighbour);
 
-            if (Neighbour == null)
-                GameCore.Instance.RefreshTilesNeighbours();
-            else
+            if (Neighbour != null)
+            {
+                Neighbour.ClearNeighbours();
+                Neighbour.FindNeighbours();
                 Neighbour.SetNeighbour(TileDirection, Tile);
+            }
         }
     }
 
     public enum CardinalDirection
     {
-        North = 0,
-        East = 1,
-        South = 2,
-        West = 3
+        North = 1 << 0,
+        East = 1 << 1,
+        South = 1 << 2,
+        West = 1 << 3
     }
 }
