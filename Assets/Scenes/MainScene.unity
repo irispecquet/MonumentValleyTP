@@ -502,7 +502,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _neighbors
+    - Name: _specificInitNeighbours
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Vector3, UnityEngine.CoreModule],[Tile,
         Assembly-CSharp]], mscorlib
@@ -1422,12 +1422,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2936757949539958255, guid: 0573c773e7689924e8b0336791fcd26e, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"_neighbors","add_keys":{"$id":0,"$type":"System.Object[], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"UnityEngine.Vector3,
-        UnityEngine.CoreModule",0,0,1}]},"remove_keys":null'
+      value: '"path":"_specificInitNeighbours","add_keys":{"$id":0,"$type":"System.Object[],
+        mscorlib","$rlength":2,"$rcontent":[{"$id":1,"$type":"UnityEngine.Vector3,
+        UnityEngine.CoreModule",0,0,1},{"$id":2,"$type":"UnityEngine.Vector3, UnityEngine.CoreModule",0,0,1}]},"remove_keys":null'
       objectReference: {fileID: 0}
     - target: {fileID: 2936757949539958255, guid: 0573c773e7689924e8b0336791fcd26e, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[1]
-      value: '"path":"_neighbors.{id:v3:(0|0|1)}","value":$eref:0'
+      value: '"path":"_specificInitNeighbours.{id:v3:(0|0|1)}","value":$eref:0'
       objectReference: {fileID: 0}
     - target: {fileID: 2936757949539958255, guid: 0573c773e7689924e8b0336791fcd26e, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
@@ -1437,10 +1438,6 @@ PrefabInstance:
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
       value: 
       objectReference: {fileID: 317815743}
-    - target: {fileID: 4522274626285579189, guid: 0573c773e7689924e8b0336791fcd26e, type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 4522274626285579189, guid: 0573c773e7689924e8b0336791fcd26e, type: 3}
     - target: {fileID: 4682830913974596640, guid: 0573c773e7689924e8b0336791fcd26e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1565,7 +1562,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _neighbors
+    - Name: _specificInitNeighbours
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Vector3, UnityEngine.CoreModule],[Tile,
         Assembly-CSharp]], mscorlib
@@ -2093,7 +2090,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _neighbors
+    - Name: _specificInitNeighbours
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Vector3, UnityEngine.CoreModule],[Tile,
         Assembly-CSharp]], mscorlib
@@ -2138,9 +2135,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 962914497}
     m_Modifications:
     - target: {fileID: 461393444574220700, guid: b0883db34d0038a4ea063fb86b4a2db4, type: 3}
+      propertyPath: _chooseNeighbours
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 461393444574220700, guid: b0883db34d0038a4ea063fb86b4a2db4, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 461393444574220700, guid: b0883db34d0038a4ea063fb86b4a2db4, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3868741057915756835, guid: b0883db34d0038a4ea063fb86b4a2db4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -2352,7 +2353,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _neighbors
+    - Name: _specificInitNeighbours
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Vector3, UnityEngine.CoreModule],[Tile,
         Assembly-CSharp]], mscorlib
@@ -4234,7 +4235,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _neighbors
+    - Name: _specificInitNeighbours
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Vector3, UnityEngine.CoreModule],[Tile,
         Assembly-CSharp]], mscorlib
@@ -4344,7 +4345,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _neighbors
+    - Name: _specificInitNeighbours
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Vector3, UnityEngine.CoreModule],[Tile,
         Assembly-CSharp]], mscorlib
@@ -4875,12 +4876,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7858303569467221116, guid: 0a98ea7f537441242b250950d4ec03be, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"_neighbors","add_keys":{"$id":0,"$type":"System.Object[], mscorlib","$rlength":1,"$rcontent":[{"$id":1,"$type":"UnityEngine.Vector3,
-        UnityEngine.CoreModule",0,0,1}]},"remove_keys":null'
+      value: '"path":"_specificInitNeighbours","add_keys":{"$id":0,"$type":"System.Object[],
+        mscorlib","$rlength":2,"$rcontent":[{"$id":1,"$type":"UnityEngine.Vector3,
+        UnityEngine.CoreModule",0,0,1},{"$id":2,"$type":"UnityEngine.Vector3, UnityEngine.CoreModule",0,0,1}]},"remove_keys":null'
       objectReference: {fileID: 0}
     - target: {fileID: 7858303569467221116, guid: 0a98ea7f537441242b250950d4ec03be, type: 3}
       propertyPath: serializationData.PrefabModifications.Array.data[1]
-      value: '"path":"_neighbors.{id:v3:(0|0|1)}","value":$eref:0'
+      value: '"path":"_specificInitNeighbours.{id:v3:(0|0|1)}","value":$eref:0'
       objectReference: {fileID: 0}
     - target: {fileID: 7858303569467221116, guid: 0a98ea7f537441242b250950d4ec03be, type: 3}
       propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
@@ -5010,7 +5012,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _neighbors
+    - Name: _specificInitNeighbours
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Vector3, UnityEngine.CoreModule],[Tile,
         Assembly-CSharp]], mscorlib

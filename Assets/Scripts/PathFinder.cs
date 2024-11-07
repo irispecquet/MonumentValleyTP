@@ -17,7 +17,7 @@ public class PathFinder
 
     private Tile[] GetNeighbours(Tile currentNode)
     {
-        return currentNode.Neighbors.Values.Where(neighbor => neighbor != null).ToArray();
+        return currentNode.Neighbours.Values.Where(neighbor => neighbor != null).ToArray();
     }
 
     private float GetDistanceBetweenTiles(Tile origin, Tile destination)

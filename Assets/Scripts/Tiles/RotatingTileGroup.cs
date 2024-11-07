@@ -94,6 +94,8 @@ namespace Tiles
         {
             _currentDirection = newCardinalDirection;
 
+            GameCore.Instance.RefreshTilesNeighbours();
+
             foreach (DynamicNeighborTile endTile in _endTiles[_currentDirection])
                 endTile.SetNeighbourTile();
         }
@@ -159,15 +161,11 @@ namespace Tiles
 
         public void SetNeighbourTile()
         {
-            GameCore.Instance.RefreshTilesNeighbours();
-                    
-            Tile.ClearNeighbours();
             Tile.FindNeighbours();
             Tile.SetNeighbour(NeighbourDirection, Neighbour);
 
             if (Neighbour != null)
             {
-                Neighbour.ClearNeighbours();
                 Neighbour.FindNeighbours();
                 Neighbour.SetNeighbour(TileDirection, Tile);
             }

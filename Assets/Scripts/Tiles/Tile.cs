@@ -23,15 +23,16 @@ public class Tile : SerializedMonoBehaviour
     [SerializeField, FoldoutGroup("References")] private bool _chooseNeighbours;
     [SerializeField, ShowIf(nameof(_chooseNeighbours)), FoldoutGroup("References"), 
      Tooltip("If you want to attribute specific neighbours to specific directions, you can do it here. All the null values will be filled automatically.")]
-    private Dictionary<Vector3, Tile> _neighbors = new();
+    private Dictionary<Vector3, Tile> _specificInitNeighbours = new();
 
     public bool IsLadder { get; private set; }
     public bool IsOccupied { get; private set; }
     public Transform PlayerPosition => _playerPosition;
-    public Dictionary<Vector3, Tile> Neighbors => _neighbors;
+    public Dictionary<Vector3, Tile> Neighbours => _neighbours;
     public Transform PlayerLookAt => _playerLookAt;
 
     private Material _initTileMaterial;
+    private Dictionary<Vector3, Tile> _neighbours;
 
     #endregion // VARIABLES
 
@@ -44,7 +45,7 @@ public class Tile : SerializedMonoBehaviour
 
     private void SetLadder()
     {
-        if(_neighbors.TryGetValue(Vector3.up, out _))
+        if(_neighbours.TryGetValue(Vector3.up, out _))
             IsLadder = true;
     }
 
@@ -58,13 +59,15 @@ public class Tile : SerializedMonoBehaviour
 
     public void FindNeighbours()
     {
+        _neighbours = new Dictionary<Vector3, Tile>(_specificInitNeighbours);
+        
         Vector3[] directions = GetDirections();
         foreach (Vector3 direction in directions)
         {
             bool detectBlock = TryFindNeighbour(direction, out RaycastHit hit);
 
             if (detectBlock)
-                _neighbors.TryAdd(direction, hit.collider.GetComponent<Tile>());
+                _neighbours.TryAdd(direction, hit.collider.GetComponent<Tile>());
         }
     }
 
@@ -83,14 +86,9 @@ public class Tile : SerializedMonoBehaviour
     public void SetNeighbour(Vector3 direction, Tile neighbour)
     {
         if (neighbour == null)
-            _neighbors.Remove(direction);
+            _neighbours.Remove(direction);
             
-        _neighbors[direction] = neighbour;
-    }
-
-    public void ClearNeighbours()
-    {
-        _neighbors.Clear();
+        _neighbours[direction] = neighbour;
     }
 
     private Vector3[] GetDirections()
