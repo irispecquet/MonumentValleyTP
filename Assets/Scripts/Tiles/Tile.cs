@@ -36,7 +36,7 @@ public class Tile : SerializedMonoBehaviour
 
     #endregion // VARIABLES
 
-    private void Start()
+    private void Awake()
     {
         FindNeighbours();
         SetLadder();
@@ -93,14 +93,18 @@ public class Tile : SerializedMonoBehaviour
 
     private Vector3[] GetDirections()
     {
+        Vector3 forward = transform.localToWorldMatrix.MultiplyVector(Vector3.forward);
+        Vector3 right = transform.localToWorldMatrix.MultiplyVector(Vector3.right);
+        Vector3 up = transform.localToWorldMatrix.MultiplyVector(Vector3.up);
+        
         Vector3[] directions =
         {
-            transform.localToWorldMatrix.MultiplyVector(Vector3.forward),
-            transform.localToWorldMatrix.MultiplyVector(Vector3.right),
-            transform.localToWorldMatrix.MultiplyVector(Vector3.up),
-            -transform.localToWorldMatrix.MultiplyVector(Vector3.forward),
-            -transform.localToWorldMatrix.MultiplyVector(Vector3.right),
-            -transform.localToWorldMatrix.MultiplyVector(Vector3.up),
+            forward,
+            right,
+            up,
+            -forward,
+            -right,
+            -up
         };
 
         return directions;
@@ -120,6 +124,7 @@ public class Tile : SerializedMonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.blue;
         Vector3[] directions = GetDirections();
         foreach (Vector3 direction in directions)
         {

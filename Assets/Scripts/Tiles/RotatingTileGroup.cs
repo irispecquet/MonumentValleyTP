@@ -29,10 +29,10 @@ namespace Tiles
 
         private void Start()
         {
-            SetCurrentDirection(GetClosestCardinalDirection());
-            
             _tiles = new List<Tile>(GetComponentsInChildren<Tile>());
 
+            SetCurrentDirection(GetClosestCardinalDirection());
+            
             if (_rotatingTileTool != null)
             {
                 _rotatingTileTool.BeginClickEvent += OnToolBeginClick;
@@ -92,12 +92,21 @@ namespace Tiles
 
         private void SetCurrentDirection(CardinalDirection newCardinalDirection)
         {
+            if (_currentDirection == newCardinalDirection)
+                return;
+            
             _currentDirection = newCardinalDirection;
 
             GameCore.Instance.RefreshTilesNeighbours();
 
-            foreach (DynamicNeighborTile endTile in _endTiles[_currentDirection])
-                endTile.SetNeighbourTile();
+            if (_endTiles.Count <= 0) 
+                return;
+            
+            if (!_endTiles.TryGetValue(_currentDirection, out List<DynamicNeighborTile> dynamicNeighborTiles)) 
+                return;
+                
+            foreach (DynamicNeighborTile tile in dynamicNeighborTiles)
+                tile.SetNeighbourTile();
         }
 
         #endregion // ROTATION

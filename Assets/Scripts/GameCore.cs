@@ -17,9 +17,6 @@ public class GameCore : MonoBehaviour
     public void RefreshTilesNeighbours()
     {
         foreach (Tile tile in _tileWithDynamicNeighbours)
-        {
-            
             tile.FindNeighbours();
-        }
     }
 }
