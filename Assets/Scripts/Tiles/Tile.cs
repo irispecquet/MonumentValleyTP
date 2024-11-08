@@ -57,6 +57,7 @@ public class Tile : SerializedMonoBehaviour
 
     #region NEIGHBOURS
 
+    [Button]
     public void FindNeighbours()
     {
         _neighbours = new Dictionary<Vector3, Tile>(_specificInitNeighbours);
@@ -67,7 +68,10 @@ public class Tile : SerializedMonoBehaviour
             bool detectBlock = TryFindNeighbour(direction, out RaycastHit hit);
 
             if (detectBlock)
-                _neighbours.TryAdd(direction, hit.collider.GetComponent<Tile>());
+            {
+                Tile tile = hit.collider.GetComponent<Tile>();
+                _neighbours.TryAdd(direction, tile);
+            }
         }
     }
 
@@ -93,9 +97,9 @@ public class Tile : SerializedMonoBehaviour
 
     private Vector3[] GetDirections()
     {
-        Vector3 forward = transform.localToWorldMatrix.MultiplyVector(Vector3.forward);
-        Vector3 right = transform.localToWorldMatrix.MultiplyVector(Vector3.right);
-        Vector3 up = transform.localToWorldMatrix.MultiplyVector(Vector3.up);
+        Vector3 forward = transform.forward;
+        Vector3 right = transform.right;
+        Vector3 up = transform.up;
         
         Vector3[] directions =
         {

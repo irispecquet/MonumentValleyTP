@@ -10,13 +10,10 @@ namespace Tiles
     {
         [SerializeField] private Dictionary<CardinalDirection, List<DynamicNeighborTile>> _endTiles = new();
         [SerializeField] private Transform _pivotPoint;
-        [SerializeField] private float _rotationSpeed = 10f;
-        [SerializeField] private float _automaticRotationSpeed = 1f;
-        [SerializeField] private RotatingTileTool _rotatingTileTool;
+        [SerializeField] private float _automaticRotationDuration = 0.5f;
         
         private CardinalDirection _currentDirection;
-        private Vector3 _initialMousePosition;
-        private bool _isDragging;
+ 
         private Tween _rotationTween;
 
         private Dictionary<CardinalDirection, float> _rotationAngles = new()
@@ -32,37 +29,31 @@ namespace Tiles
             _tiles = new List<Tile>(GetComponentsInChildren<Tile>());
 
             SetCurrentDirection(GetClosestCardinalDirection());
-            
-            if (_rotatingTileTool != null)
-            {
-                _rotatingTileTool.BeginClickEvent += OnToolBeginClick;
-                _rotatingTileTool.ClickEvent += OnToolClick;
-                _rotatingTileTool.EndClickEvent += OnToolEndClick;
-            }
+            Initialize();
         }
 
         #region ROTATION EVENTS
 
-        private void OnToolBeginClick(Vector3 mousePosition)
+        protected override void OnToolBeginClick(Vector3 mousePosition)
         {
             if (!CanRotate())
                 return;
-            
-            _initialMousePosition = mousePosition;
+
             _isDragging = true;
+            _initialMousePosition = mousePosition;
         }
 
-        private void OnToolClick(Vector3 mousePosition)
+        protected override void OnToolClick(Vector3 mousePosition)
         {
             if (!_isDragging) return;
-
+            
             Rotate(mousePosition);
         }
 
-        private void OnToolEndClick()
+        protected override void OnToolEndClick()
         {
+            EndRotation(_automaticRotationDuration);
             _isDragging = false;
-            EndRotation(_automaticRotationSpeed);
         }
 
         #endregion // ROTATION EVENTS
@@ -74,7 +65,7 @@ namespace Tiles
             Vector3 currentMousePosition = mousePosition;
             Vector3 mouseDelta = currentMousePosition - _initialMousePosition;
 
-            float rotationAngle = mouseDelta.x * _rotationSpeed;
+            float rotationAngle = mouseDelta.x * _speed;
             
             _pivotPoint.Rotate(Vector3.up, rotationAngle * Time.deltaTime);
             _initialMousePosition = currentMousePosition;
@@ -151,12 +142,7 @@ namespace Tiles
 
         private void OnDestroy()
         {
-            if (_rotatingTileTool != null)
-            {
-                _rotatingTileTool.BeginClickEvent -= OnToolBeginClick;
-                _rotatingTileTool.ClickEvent -= OnToolClick;
-                _rotatingTileTool.EndClickEvent -= OnToolEndClick;
-            }
+            Destroy();
         }
     }
 

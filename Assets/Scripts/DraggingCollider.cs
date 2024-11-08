@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class RotatingTileTool : MonoBehaviour
+public class DraggingCollider : MonoBehaviour
 {
     public Action<Vector3> BeginClickEvent;
     public Action<Vector3> ClickEvent;

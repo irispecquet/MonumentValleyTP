@@ -185,6 +185,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if(Application.isPlaying)
+            return;
+        
         Gizmos.color = IsOnTile(out _) ? Color.green : Color.red;
         Vector3 raycastOrigin = GetOrigin();
         Gizmos.DrawLine(raycastOrigin, raycastOrigin + -transform.up * _downRayDistance);
