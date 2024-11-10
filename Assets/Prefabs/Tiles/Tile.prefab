@@ -165,7 +165,9 @@ MonoBehaviour:
   _verticalNeighbourRayLength: 0.25
   _punchPositionForce: 0.15
   _punchPositionDuration: 0.2
-  _meshRenderer: {fileID: 3292321322679674663}
+  _meshRenderers:
+  - {fileID: 3292321322679674663}
+  - {fileID: 184641284196814133}
   _neighbourDetectionTransform: {fileID: 8176586755610207489}
   _highlightedMaterial: {fileID: 2100000, guid: 81c06ec9ce7ff7349a91704ef066132a, type: 2}
   _playerPosition: {fileID: 8252528971179600747}

@@ -202,7 +202,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _neighbors
+    - Name: _specificInitNeighbours
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.Vector3, UnityEngine.CoreModule],[Tile,
         Assembly-CSharp]], mscorlib
@@ -226,7 +226,8 @@ MonoBehaviour:
   _verticalNeighbourRayLength: 0.15
   _punchPositionForce: 0.15
   _punchPositionDuration: 0.2
-  _meshRenderer: {fileID: 3721661931473679474}
+  _meshRenderers:
+  - {fileID: 3721661931473679474}
   _neighbourDetectionTransform: {fileID: 3244490842118533617}
   _highlightedMaterial: {fileID: 2100000, guid: 81c06ec9ce7ff7349a91704ef066132a, type: 2}
   _playerPosition: {fileID: 7955208176726314154}

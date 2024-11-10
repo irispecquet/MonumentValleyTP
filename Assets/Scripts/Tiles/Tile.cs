@@ -14,7 +14,7 @@ public class Tile : SerializedMonoBehaviour
     [SerializeField, FoldoutGroup("Tween")] private float _punchPositionForce;
     [SerializeField, FoldoutGroup("Tween")] private float _punchPositionDuration;
     
-    [SerializeField, FoldoutGroup("References")] private MeshRenderer _meshRenderer;
+    [SerializeField, FoldoutGroup("References")] private MeshRenderer[] _meshRenderers;
     [SerializeField, FoldoutGroup("References")] private Transform _neighbourDetectionTransform;
     [SerializeField, FoldoutGroup("References")] private Material _highlightedMaterial;
     [SerializeField, FoldoutGroup("References")] private Transform _playerPosition;
@@ -40,7 +40,7 @@ public class Tile : SerializedMonoBehaviour
     {
         FindNeighbours();
         SetLadder();
-        _initTileMaterial = _meshRenderer.sharedMaterial;
+        _initTileMaterial = _meshRenderers[0].sharedMaterial;
     }
 
     private void SetLadder()
@@ -52,7 +52,17 @@ public class Tile : SerializedMonoBehaviour
     public void OnBeingCurrentTile(bool isCurrent)
     {
         IsOccupied = isCurrent;
-        _meshRenderer.sharedMaterial = isCurrent ? _highlightedMaterial : _initTileMaterial;
+
+        foreach (MeshRenderer mesh in _meshRenderers)
+            mesh.sharedMaterial = isCurrent ? _highlightedMaterial : _initTileMaterial;
+    }
+
+    public void ChangeMaterial(Material material)
+    {
+        foreach (MeshRenderer mesh in _meshRenderers)
+            mesh.sharedMaterial = material;
+
+        _initTileMaterial = material;
     }
 
     #region NEIGHBOURS

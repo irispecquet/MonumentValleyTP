@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
         Vector3 targetPosition = _targetTile.tile.PlayerPosition.position;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, _moveSpeed * Time.fixedDeltaTime);
 
-        if (!(Vector3.Distance(transform.position, targetPosition) < 0.05f)) 
+        if (Vector3.Distance(transform.position, targetPosition) > 0.05f)
             return;
         
         int index = _targetTile.index + 1;
