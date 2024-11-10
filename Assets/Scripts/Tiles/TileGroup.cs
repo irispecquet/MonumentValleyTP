@@ -15,6 +15,8 @@ namespace Tiles
 
         protected void Initialize()
         {
+            _tiles = new List<Tile>(GetComponentsInChildren<Tile>());
+            
             if (_draggingCollider != null)
             {
                 _draggingCollider.BeginClickEvent += OnToolBeginClick;

@@ -26,8 +26,6 @@ namespace Tiles
 
         private void Start()
         {
-            _tiles = new List<Tile>(GetComponentsInChildren<Tile>());
-
             SetCurrentDirection(GetClosestCardinalDirection());
             Initialize();
         }
