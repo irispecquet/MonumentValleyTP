@@ -161,7 +161,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 81c06ec9ce7ff7349a91704ef066132a, type: 2}
+  - {fileID: 2100000, guid: 5aa8b44810708984a939caf5e201ec84, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -263,10 +263,11 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  _draggingCollider: {fileID: 0}
+  _speed: 0
   _pivotPoint: {fileID: 1440480676829709201}
-  _rotationSpeed: 80
-  _automaticRotationSpeed: 0.5
-  _rotatingTileTool: {fileID: 8137349003472894739}
+  _rotation: {x: 0, y: 0, z: 0}
+  _automaticRotationDuration: 0.5
 --- !u!1 &8821140087734494796
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +329,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 81c06ec9ce7ff7349a91704ef066132a, type: 2}
+  - {fileID: 2100000, guid: 5aa8b44810708984a939caf5e201ec84, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

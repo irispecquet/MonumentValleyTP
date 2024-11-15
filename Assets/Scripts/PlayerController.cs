@@ -116,8 +116,13 @@ public class PlayerController : MonoBehaviour
         Turn(path[startingIndex].PlayerLookAt.position);
         _reachTargetTileEvent += Turn;
 
+        _moveTween?.Kill();
+        _moveTween = transform.DOMove(_targetTile.tile.PlayerPosition.position, _moveSpeed).SetEase(Ease.Linear);
+        
         _isMoving = true;
     }
+
+    private Tween _moveTween;
 
     private void Move()
     {
@@ -125,8 +130,8 @@ public class PlayerController : MonoBehaviour
             return;
 
         Vector3 targetPosition = _targetTile.tile.PlayerPosition.position;
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, _moveSpeed * Time.fixedDeltaTime);
-
+        // transform.position = Vector3.MoveTowards(transform.position, targetPosition, _moveSpeed * Time.fixedDeltaTime);
+        
         if (Vector3.Distance(transform.position, targetPosition) > 0.05f)
             return;
         
@@ -136,6 +141,9 @@ public class PlayerController : MonoBehaviour
         {
             _targetTile = (_targetPath[index], index);
             _animator.SetBool(IsClimbing, _targetTile.tile.IsLadder);
+            
+            _moveTween?.Kill();
+            _moveTween = transform.DOMove(_targetTile.tile.PlayerPosition.position, _moveSpeed).SetEase(Ease.Linear);
             _reachTargetTileEvent?.Invoke(_targetTile.tile.PlayerLookAt.position);
         }
         else

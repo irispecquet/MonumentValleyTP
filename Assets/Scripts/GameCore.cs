@@ -30,10 +30,13 @@ public class GameCore : MonoBehaviour
         int newColor = _currentColor == 0 ? 1 : 0;
             
         foreach (Tile tile in _tilesToReverse)
-        {
             tile.ChangeMaterial(_tileMaterials[newColor]);
-        }
 
         _currentColor = newColor;
+    }
+
+    public void EndGame()
+    {
+        Debug.Log("You won");
     }
 }

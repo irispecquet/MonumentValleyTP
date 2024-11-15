@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -24,6 +25,7 @@ public class Tile : SerializedMonoBehaviour
     [SerializeField, ShowIf(nameof(_chooseNeighbours)), FoldoutGroup("References"), 
      Tooltip("If you want to attribute specific neighbours to specific directions, you can do it here. All the null values will be filled automatically.")]
     private Dictionary<Vector3, Tile> _specificInitNeighbours = new();
+    [SerializeField, Space] private bool _isFinalTile;
 
     public bool IsLadder { get; private set; }
     public bool IsOccupied { get; private set; }
@@ -55,6 +57,9 @@ public class Tile : SerializedMonoBehaviour
 
         foreach (MeshRenderer mesh in _meshRenderers)
             mesh.sharedMaterial = isCurrent ? _highlightedMaterial : _initTileMaterial;
+        
+        if(_isFinalTile)
+            GameCore.Instance.EndGame();
     }
 
     public void ChangeMaterial(Material material)
@@ -83,6 +88,11 @@ public class Tile : SerializedMonoBehaviour
                 _neighbours.TryAdd(direction, tile);
             }
         }
+        
+        StringBuilder sb = new();
+        foreach ((Vector3 dir, Tile neighbour) in _neighbours)
+            sb.Append($"- {dir} : {neighbour}\n");
+        Debug.Log(sb.ToString(), gameObject);
     }
 
     private bool TryFindNeighbour(Vector3 direction, out RaycastHit hit)

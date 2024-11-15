@@ -10,12 +10,11 @@ namespace Tiles
     {
         [SerializeField] private Dictionary<CardinalDirection, List<DynamicNeighborTile>> _endTiles = new();
         [SerializeField] private Transform _pivotPoint;
+        [SerializeField] private Vector3 _rotation;
         [SerializeField] private float _automaticRotationDuration = 0.5f;
         
         private CardinalDirection _currentDirection;
- 
         private Tween _rotationTween;
-
         private Dictionary<CardinalDirection, float> _rotationAngles = new()
         {
             { CardinalDirection.North, 0 },
@@ -65,7 +64,7 @@ namespace Tiles
 
             float rotationAngle = mouseDelta.x * _speed;
             
-            _pivotPoint.Rotate(Vector3.up, rotationAngle * Time.deltaTime);
+            _pivotPoint.Rotate(_rotation, rotationAngle * Time.deltaTime);
             _initialMousePosition = currentMousePosition;
         }
 
@@ -74,8 +73,8 @@ namespace Tiles
             _rotationTween?.Complete();
             
             CardinalDirection newCardinalDirection = GetClosestCardinalDirection();
-            Vector3 targetValue = Vector3.up * _rotationAngles[newCardinalDirection];
-            
+            Vector3 targetValue = _rotation * _rotationAngles[newCardinalDirection];
+
             _rotationTween = _pivotPoint.DORotate(targetValue, tweenSpeed).OnComplete(() => { SetCurrentDirection(newCardinalDirection); });
         }
 
@@ -85,6 +84,12 @@ namespace Tiles
                 return;
             
             _currentDirection = newCardinalDirection;
+
+            foreach (Tile tile in _tiles)
+            {
+                Vector3 rotationAngle = _rotation * _rotationAngles[_currentDirection];
+                tile.transform.DOLocalRotate(rotationAngle, 0);
+            }
 
             GameCore.Instance.RefreshTilesNeighbours();
 
@@ -103,7 +108,7 @@ namespace Tiles
         [Button]
         public void RotateClockwise()
         {
-            _pivotPoint.Rotate(Vector3.up, 90);
+            _pivotPoint.Rotate(_rotation, 90);
         }
 
         private bool CanRotate()
@@ -119,7 +124,12 @@ namespace Tiles
 
         private CardinalDirection GetClosestCardinalDirection()
         {
-            float currentAngle = _pivotPoint.eulerAngles.y;
+            float currentAngle = 0;
+
+            currentAngle = _rotation.x >= 1 ? _pivotPoint.eulerAngles.x :
+                           _rotation.z >= 1 ? _pivotPoint.eulerAngles.z :
+                           _rotation.y >= 1 ? _pivotPoint.eulerAngles.y : currentAngle;
+
             float minDistance = 360;
             CardinalDirection cardinalDirection = CardinalDirection.North;
 
