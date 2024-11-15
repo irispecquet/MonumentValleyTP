@@ -1,5 +1,6 @@
-using System;
+using System.Collections.Generic;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Tiles
@@ -8,7 +9,7 @@ namespace Tiles
     {
         [SerializeField] private Vector3 _movingDirection;
         [SerializeField] private float _rayCollisionDistance;
-        [SerializeField] private Vector3[] _snapPositions;
+        [SerializeField] private List<Vector3> _snapPositions = new List<Vector3>();
 
         private bool _isMoving;
         private Tile _occupiedTile;
@@ -84,6 +85,12 @@ namespace Tiles
             }
             
             return null;
+        }
+        
+        [Button]
+        public void AddSnappingPosition()
+        {
+           _snapPositions.Add(transform.position);
         }
 
         private void OnDestroy()
