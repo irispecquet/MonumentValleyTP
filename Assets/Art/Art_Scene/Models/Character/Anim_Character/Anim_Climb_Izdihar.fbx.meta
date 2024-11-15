@@ -1,0 +1,958 @@
+fileFormatVersion: 2
+guid: 2abbc0a2aa4fdc74288b5496aac57dc2
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01 - Default
+    second: {fileID: 2100000, guid: b31ee23c44d36dc43a2b326eec8909a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #12
+    second: {fileID: 2100000, guid: 6376ebf026f9db6429fb803e4a42bc2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #13
+    second: {fileID: 2100000, guid: a2bea3eb583f3754d949102f65c9d528, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #14
+    second: {fileID: 2100000, guid: a3ab234b3bde3954295686a0c61240aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #15
+    second: {fileID: 2100000, guid: 5c35879f01d205d46a502f6582abbdb3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert8
+    second: {fileID: 2100000, guid: b265903065eef384eb79ba2c0b7403a6, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Izdihar_Rig_LeftLeg' has translation animation
+      that will be discarded.\n\t'Izdihar_Rig_RightLeg' has translation animation
+      that will be discarded.\n\t'Izdihar_Rig_LeftForeArm' has translation animation
+      that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Belt_1_Low
+        weight: 0
+      - path: Bottom_Low
+        weight: 0
+      - path: Chocker_Low
+        weight: 0
+      - path: Ears_Low
+        weight: 0
+      - path: EyeBrows_Low
+        weight: 0
+      - path: EyelashesTop_Low
+        weight: 0
+      - path: Eyes_Low
+        weight: 0
+      - path: EylashesBottom_Low
+        weight: 0
+      - path: Flower_Low
+        weight: 0
+      - path: Hair_1_Low
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_ChestEndEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_ChestOriginEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_HeadEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_LeftUpLeg
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_LeftUpLeg/Izdihar_Rig_Ctrl_LeftLeg
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_LeftUpLeg/Izdihar_Rig_Ctrl_LeftLeg/Izdihar_Rig_Ctrl_LeftFoot
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_LeftUpLeg/Izdihar_Rig_Ctrl_LeftLeg/Izdihar_Rig_Ctrl_LeftFoot/Izdihar_Rig_Ctrl_LeftToeBase
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_RightUpLeg
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_RightUpLeg/Izdihar_Rig_Ctrl_RightLeg
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_RightUpLeg/Izdihar_Rig_Ctrl_RightLeg/Izdihar_Rig_Ctrl_RightFoot
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_RightUpLeg/Izdihar_Rig_Ctrl_RightLeg/Izdihar_Rig_Ctrl_RightFoot/Izdihar_Rig_Ctrl_RightToeBase
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_Spine
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_Spine/Izdihar_Rig_Ctrl_Spine1
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_Spine/Izdihar_Rig_Ctrl_Spine1/Izdihar_Rig_Ctrl_Spine2
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_Spine/Izdihar_Rig_Ctrl_Spine1/Izdihar_Rig_Ctrl_Spine2/Izdihar_Rig_Ctrl_LeftShoulder
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_Spine/Izdihar_Rig_Ctrl_Spine1/Izdihar_Rig_Ctrl_Spine2/Izdihar_Rig_Ctrl_LeftShoulder/Izdihar_Rig_Ctrl_LeftArm
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_Spine/Izdihar_Rig_Ctrl_Spine1/Izdihar_Rig_Ctrl_Spine2/Izdihar_Rig_Ctrl_LeftShoulder/Izdihar_Rig_Ctrl_LeftArm/Izdihar_Rig_Ctrl_LeftForeArm
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_Spine/Izdihar_Rig_Ctrl_Spine1/Izdihar_Rig_Ctrl_Spine2/Izdihar_Rig_Ctrl_LeftShoulder/Izdihar_Rig_Ctrl_LeftArm/Izdihar_Rig_Ctrl_LeftForeArm/Izdihar_Rig_Ctrl_LeftHand
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_Spine/Izdihar_Rig_Ctrl_Spine1/Izdihar_Rig_Ctrl_Spine2/Izdihar_Rig_Ctrl_Neck
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_Spine/Izdihar_Rig_Ctrl_Spine1/Izdihar_Rig_Ctrl_Spine2/Izdihar_Rig_Ctrl_Neck/Izdihar_Rig_Ctrl_Head
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_Spine/Izdihar_Rig_Ctrl_Spine1/Izdihar_Rig_Ctrl_Spine2/Izdihar_Rig_Ctrl_RightShoulder
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_Spine/Izdihar_Rig_Ctrl_Spine1/Izdihar_Rig_Ctrl_Spine2/Izdihar_Rig_Ctrl_RightShoulder/Izdihar_Rig_Ctrl_RightArm
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_Spine/Izdihar_Rig_Ctrl_Spine1/Izdihar_Rig_Ctrl_Spine2/Izdihar_Rig_Ctrl_RightShoulder/Izdihar_Rig_Ctrl_RightArm/Izdihar_Rig_Ctrl_RightForeArm
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_Hips/Izdihar_Rig_Ctrl_Spine/Izdihar_Rig_Ctrl_Spine1/Izdihar_Rig_Ctrl_Spine2/Izdihar_Rig_Ctrl_RightShoulder/Izdihar_Rig_Ctrl_RightArm/Izdihar_Rig_Ctrl_RightForeArm/Izdihar_Rig_Ctrl_RightHand
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_HipsEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_LeftAnkleEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_LeftElbowEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_LeftFootEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_LeftHipEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_LeftKneeEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_LeftShoulderEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_LeftWristEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_RightAnkleEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_RightElbowEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_RightFootEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_RightHipEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_RightKneeEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_RightShoulderEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Ctrl_RightWristEffector
+        weight: 0
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_LeftUpLeg
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_LeftUpLeg/Izdihar_Rig_LeftLeg
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_LeftUpLeg/Izdihar_Rig_LeftLeg/Izdihar_Rig_LeftFoot
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_LeftUpLeg/Izdihar_Rig_LeftLeg/Izdihar_Rig_LeftFoot/Izdihar_Rig_LeftToeBase
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_RightUpLeg
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_RightUpLeg/Izdihar_Rig_RightLeg
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_RightUpLeg/Izdihar_Rig_RightLeg/Izdihar_Rig_RightFoot
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_RightUpLeg/Izdihar_Rig_RightLeg/Izdihar_Rig_RightFoot/Izdihar_Rig_RightToeBase
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Belt1
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Belt1/Izdihar_Rig_Belt2
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Belt1/Izdihar_Rig_Belt2/Izdihar_Rig_Belt3
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Belt1/Izdihar_Rig_Belt2/Izdihar_Rig_Belt3/Izdihar_Rig_Belt4
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_LeftShoulder
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_LeftShoulder/Izdihar_Rig_LeftArm
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_LeftShoulder/Izdihar_Rig_LeftArm/Izdihar_Rig_LeftForeArm
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_LeftShoulder/Izdihar_Rig_LeftArm/Izdihar_Rig_LeftForeArm/Izdihar_Rig_LeftHand
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_Neck
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_Neck/Izdihar_Rig_Head
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_Neck/Izdihar_Rig_Head/Izdihar_Rig_Hair1
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_Neck/Izdihar_Rig_Head/Izdihar_Rig_Hair1/Izdihar_Rig_Hair2
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_Neck/Izdihar_Rig_Head/Izdihar_Rig_Hair1/Izdihar_Rig_Hair2/Izdihar_Rig_Hair3
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_Neck/Izdihar_Rig_Head/Izdihar_Rig_Hair1/Izdihar_Rig_Hair2/Izdihar_Rig_Hair3/Izdihar_Rig_Hair4
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_Neck/Izdihar_Rig_Head/Izdihar_Rig_Hair1/Izdihar_Rig_Hair2/Izdihar_Rig_Hair3/Izdihar_Rig_Hair4/Izdihar_Rig_Hair5
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_Neck/Izdihar_Rig_Head/Izdihar_Rig_Hair1/Izdihar_Rig_Hair2/Izdihar_Rig_Hair3/Izdihar_Rig_Hair4/Izdihar_Rig_Hair5/Izdihar_Rig_Hair6
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_RightShoulder
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_RightShoulder/Izdihar_Rig_RightArm
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_RightShoulder/Izdihar_Rig_RightArm/Izdihar_Rig_RightForeArm
+        weight: 1
+      - path: Izdihar_Rig_Ctrl_Reference/Izdihar_Rig_Reference/Izdihar_Rig_Hips/Izdihar_Rig_Spine/Izdihar_Rig_Spine1/Izdihar_Rig_Spine2/Izdihar_Rig_RightShoulder/Izdihar_Rig_RightArm/Izdihar_Rig_RightForeArm/Izdihar_Rig_RightHand
+        weight: 1
+      - path: Skin_Low
+        weight: 0
+      - path: Top_Low
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: Izdihar_Rig_Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Izdihar_Rig_Spine2
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Anim_Idle_Izdihar(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bottom_Low
+      parentName: Anim_Idle_Izdihar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Belt_1_Low
+      parentName: Anim_Idle_Izdihar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Skin_Low
+      parentName: Anim_Idle_Izdihar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chocker_Low
+      parentName: Anim_Idle_Izdihar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ears_Low
+      parentName: Anim_Idle_Izdihar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hair_1_Low
+      parentName: Anim_Idle_Izdihar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Top_Low
+      parentName: Anim_Idle_Izdihar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: EyeBrows_Low
+      parentName: Anim_Idle_Izdihar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: EylashesBottom_Low
+      parentName: Anim_Idle_Izdihar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: EyelashesTop_Low
+      parentName: Anim_Idle_Izdihar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Eyes_Low
+      parentName: Anim_Idle_Izdihar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Flower_Low
+      parentName: Anim_Idle_Izdihar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_Reference
+      parentName: Anim_Idle_Izdihar(Clone)
+      position: {x: -0, y: -0.00024497986, z: -0.081739195}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_HipsEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: -0.000000023841856, y: 0.6900637, z: 0.069469295}
+      rotation: {x: 0.0309107, y: -0.05685039, z: -0.0035027037, w: 0.997898}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftAnkleEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: -0.113612495, y: 0.024261016, z: -0.07985197}
+      rotation: {x: 0.00027556717, y: -0.000014229201, z: -0.0000025667862, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightAnkleEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: 0.1547576, y: 0.024294319, z: 0.079030275}
+      rotation: {x: 0.00030401358, y: 0.000028177012, z: 0.0000050581207, w: 0.99999994}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftWristEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: -0.24418671, y: 0.7272544, z: 0.10119108}
+      rotation: {x: -0.02396549, y: 0.10400876, z: 0.5651198, w: 0.8180755}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightWristEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: 0.23275295, y: 0.7151786, z: -0.0022353649}
+      rotation: {x: -0.01847328, y: 0.04066298, z: -0.57824993, w: 0.8146363}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftKneeEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: -0.10736108, y: 0.38060462, z: 0.12411065}
+      rotation: {x: 0.25670877, y: -0.024284078, z: -0.014332416, w: 0.9660774}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightKneeEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: 0.094843425, y: 0.4051766, z: 0.22030653}
+      rotation: {x: 0.17645429, y: -0.016584475, z: 0.07134083, w: 0.9815801}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftElbowEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: -0.19013259, y: 0.8732681, z: 0.06948672}
+      rotation: {x: -0.024650753, y: 0.10491905, z: 0.56470966, w: 0.8182221}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightElbowEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: 0.18048051, y: 0.8650596, z: 0.004855003}
+      rotation: {x: -0.018550891, y: 0.040529758, z: -0.577813, w: 0.8149511}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_ChestOriginEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: -0.00084720267, y: 0.7351748, z: 0.08108652}
+      rotation: {x: 0.030212492, y: -0.0972138, z: -0.0053092055, w: 0.99479073}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_ChestEndEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: -0.0008300757, y: 1.0187125, z: 0.0602879}
+      rotation: {x: 0.007776556, y: 0.043407615, z: -0.008528364, w: 0.9989908}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftFootEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: -0.11361451, y: 0.012149389, z: -0.012820444}
+      rotation: {x: -0.000003829629, y: -0.000004340245, z: 1.6621407e-11, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightFootEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: 0.15476713, y: 0.012178872, z: 0.1460611}
+      rotation: {x: -2.7213079e-15, y: -0.000003488533, z: 7.800722e-10, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftShoulderEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: -0.1304517, y: 1.0357664, z: 0.035267316}
+      rotation: {x: -0.022890083, y: 0.10271129, z: 0.5660085, w: 0.8176557}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightShoulderEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: 0.12297375, y: 1.0316806, z: 0.013159465}
+      rotation: {x: -0.017687555, y: 0.04150864, z: -0.57910126, w: 0.8140061}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_HeadEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: 0.008352373, y: 1.205004, z: 0.13113153}
+      rotation: {x: 0.044355445, y: 0.043094993, z: -0.009958227, w: 0.9980362}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftHipEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: -0.07652329, y: 0.69087285, z: 0.060746808}
+      rotation: {x: -0.10243316, y: -0.048167523, z: -0.04384864, w: 0.99260503}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightHipEffector
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: 0.07652324, y: 0.6892545, z: 0.07819179}
+      rotation: {x: -0.2270552, y: -0.06469956, z: 0.044798195, w: 0.9706972}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_Hips
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: -0.0003244052, y: 0.63691205, z: 0.06738466}
+      rotation: {x: 0.030910697, y: -0.05685039, z: -0.0035027033, w: 0.997898}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftUpLeg
+      parentName: Izdihar_Rig_Ctrl_Hips
+      position: {x: -0.077023044, y: 0.05317932, z: -0.0012275313}
+      rotation: {x: -0.13522404, y: 0.0066495216, z: -0.032967415, w: 0.99024415}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftLeg
+      parentName: Izdihar_Rig_Ctrl_LeftUpLeg
+      position: {x: -0, y: -0.31817067, z: 0}
+      rotation: {x: 0.35414323, y: 0.0351535, z: 0.013282231, w: 0.93443584}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftFoot
+      parentName: Izdihar_Rig_Ctrl_LeftLeg
+      position: {x: 8.881784e-18, y: -0.4106344, z: 2.220446e-18}
+      rotation: {x: -0.25644246, y: 0.02427362, z: 0.014326896, w: 0.9661485}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftToeBase
+      parentName: Izdihar_Rig_Ctrl_LeftFoot
+      position: {x: -0.000000042915342, y: -0.012074705, z: 0.0670383}
+      rotation: {x: -0.00027939677, y: 0.000009888958, z: 0.0000025670608, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightUpLeg
+      parentName: Izdihar_Rig_Ctrl_Hips
+      position: {x: 0.077023044, y: 0.05317932, z: -0.0012275313}
+      rotation: {x: -0.2538094, y: -0.008789604, z: 0.06301217, w: 0.9651596}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightLeg
+      parentName: Izdihar_Rig_Ctrl_RightUpLeg
+      position: {x: 0.000000019073486, y: -0.31817067, z: 0.0000031125544}
+      rotation: {x: 0.39802927, y: 0.023306148, z: 0.010095232, w: 0.91702104}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightFoot
+      parentName: Izdihar_Rig_Ctrl_RightLeg
+      position: {x: -0.000000009536743, y: -0.4106344, z: 0}
+      rotation: {x: -0.17615378, y: 0.016591335, z: -0.07134591, w: 0.98163354}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightToeBase
+      parentName: Izdihar_Rig_Ctrl_RightFoot
+      position: {x: 0.0000056171416, y: -0.012074705, z: 0.0670383}
+      rotation: {x: -0.00030401355, y: -0.000031669417, z: -0.000004990839, w: 0.99999994}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_Spine
+      parentName: Izdihar_Rig_Ctrl_Hips
+      position: {x: -0, y: 0.09892143, z: 0.0076238033}
+      rotation: {x: -0.000562007, y: -0.04051349, z: -0.0005262342, w: 0.9991787}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_Spine1
+      parentName: Izdihar_Rig_Ctrl_Spine
+      position: {x: -0, y: 0.11164604, z: 0.0010794329}
+      rotation: {x: -0.011750259, y: 0.070186436, z: -0.003530678, w: 0.99745846}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_Spine2
+      parentName: Izdihar_Rig_Ctrl_Spine1
+      position: {x: -0, y: 0.09136848, z: 0.0010794328}
+      rotation: {x: -0.011941065, y: 0.0702296, z: -0.0017431425, w: 0.99745786}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftShoulder
+      parentName: Izdihar_Rig_Ctrl_Spine2
+      position: {x: -0.050891012, y: 0.08037422, z: -0.0346213}
+      rotation: {x: 0.00034232115, y: 0.0001562782, z: -0.0006557092, w: 0.9999997}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftArm
+      parentName: Izdihar_Rig_Ctrl_LeftShoulder
+      position: {x: -0.07633652, y: 0.014257812, z: -0.03645912}
+      rotation: {x: -0.055085905, y: 0.071353436, z: 0.5711203, w: 0.8159019}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftForeArm
+      parentName: Izdihar_Rig_Ctrl_LeftArm
+      position: {x: -0.17646123, y: 2.842171e-16, z: -2.6645352e-17}
+      rotation: {x: -0.00004363812, y: 0.0027732977, z: -0.0015129861, w: 0.99999505}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_LeftHand
+      parentName: Izdihar_Rig_Ctrl_LeftForeArm
+      position: {x: -0.15889308, y: 1.4210854e-16, z: -8.881784e-18}
+      rotation: {x: 0.000000003919081, y: -0.0011265301, z: 0.00046799655, w: 0.9999993}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightShoulder
+      parentName: Izdihar_Rig_Ctrl_Spine2
+      position: {x: 0.050891012, y: 0.08037422, z: -0.0346213}
+      rotation: {x: 0.00052474096, y: -0.000056256118, z: 0.0010768061, w: 0.9999993}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightArm
+      parentName: Izdihar_Rig_Ctrl_RightShoulder
+      position: {x: 0.07633652, y: 0.014257812, z: -0.03645912}
+      rotation: {x: 0.000322733, y: 0.0012232, z: -0.5735484, w: 0.8191707}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightForeArm
+      parentName: Izdihar_Rig_Ctrl_RightArm
+      position: {x: 0.17646123, y: 2.842171e-16, z: -2.6645352e-17}
+      rotation: {x: -0.00017264773, y: -0.0013587874, z: 0.0015427959, w: 0.9999979}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_RightHand
+      parentName: Izdihar_Rig_Ctrl_RightForeArm
+      position: {x: 0.15889308, y: 1.4210854e-16, z: -8.881784e-18}
+      rotation: {x: -0.0000018613207, y: 0.00017427445, z: -0.0005323554, w: 0.9999999}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_Neck
+      parentName: Izdihar_Rig_Ctrl_Spine2
+      position: {x: -0, y: 0.149579, z: -0.0066529005}
+      rotation: {x: 0.01969339, y: -0.00006328183, z: 0.000213011, w: 0.99980605}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Ctrl_Head
+      parentName: Izdihar_Rig_Ctrl_Neck
+      position: {x: -0, y: 0.11974907, z: 0.03567509}
+      rotation: {x: 0.016926859, y: 0.00008842785, z: -0.00006213543, w: 0.99985677}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Reference
+      parentName: Izdihar_Rig_Ctrl_Reference
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Izdihar_Rig_Hips
+      parentName: Izdihar_Rig_Reference
+      position: {x: -0.00032442427, y: 0.7039675, z: 0.06738467}
+      rotation: {x: 0.5188548, y: -0.48040575, z: -0.5188548, w: 0.48040575}
+      scale: {x: 1.0000007, y: 1.0000008, z: 1.0000004}
+    - name: Izdihar_Rig_LeftUpLeg
+      parentName: Izdihar_Rig_Hips
+      position: {x: -0.052927766, y: -0.005310267, z: 0.07702306}
+      rotation: {x: 0.039740294, y: -0.008942723, z: -0.99450856, w: 0.09640263}
+      scale: {x: 0.9999992, y: 0.99999994, z: 1.0000004}
+    - name: Izdihar_Rig_LeftLeg
+      parentName: Izdihar_Rig_LeftUpLeg
+      position: {x: -0.31817037, y: -0.00000997513, z: 0.0000010704131}
+      rotation: {x: 0.0065073357, y: -0.00068194704, z: 0.101592064, w: -0.9948047}
+      scale: {x: 1.0000006, y: 1.0000001, z: 1.0000008}
+    - name: Izdihar_Rig_LeftFoot
+      parentName: Izdihar_Rig_LeftLeg
+      position: {x: -0.41063404, y: 0.0000022442684, z: -0.0000001846358}
+      rotation: {x: 0.028937545, y: 0.027843675, z: -0.67333645, w: -0.7382449}
+      scale: {x: 1.0000002, y: 1.0000014, z: 1.0000001}
+    - name: Izdihar_Rig_LeftToeBase
+      parentName: Izdihar_Rig_LeftFoot
+      position: {x: -0.06811698, y: -0.000000010129422, z: 0.00000005160898}
+      rotation: {x: 0.000000005587934, y: -0.0000000018626447, z: 0.000000008090863, w: 1}
+      scale: {x: 1.0000005, y: 0.99999994, z: 1.0000001}
+    - name: Izdihar_Rig_RightUpLeg
+      parentName: Izdihar_Rig_Hips
+      position: {x: -0.05292774, y: -0.00531028, z: -0.07702301}
+      rotation: {x: 0.008954674, y: 0.03973995, z: 0.09640363, w: 0.9945084}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000004}
+    - name: Izdihar_Rig_RightLeg
+      parentName: Izdihar_Rig_RightUpLeg
+      position: {x: 0.31817034, y: 0.000012013747, z: -0.0000009881344}
+      rotation: {x: -0.0064900783, y: 0.00068022317, z: -0.10159398, w: 0.99480456}
+      scale: {x: 1.0000004, y: 1.0000006, z: 1.0000006}
+    - name: Izdihar_Rig_RightFoot
+      parentName: Izdihar_Rig_RightLeg
+      position: {x: 0.41063446, y: -0.0000010568926, z: -0.00000014868237}
+      rotation: {x: -0.028959563, y: -0.027824087, z: 0.67333716, w: 0.73824406}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000005}
+    - name: Izdihar_Rig_RightToeBase
+      parentName: Izdihar_Rig_RightFoot
+      position: {x: 0.06811693, y: -0.0000000014998623, z: -0.000000020279941}
+      rotation: {x: 0.000025425103, y: -0, z: 0.000000070605886, w: 1}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1}
+    - name: Izdihar_Rig_Spine
+      parentName: Izdihar_Rig_Hips
+      position: {x: -0.0992148, y: -0.000000015514132, z: 0.00000002196122}
+      rotation: {x: -0, y: -0, z: -0.033618245, w: -0.99943477}
+      scale: {x: 0.99999994, y: 0.99999994, z: 1.0000004}
+    - name: Izdihar_Rig_Belt1
+      parentName: Izdihar_Rig_Spine
+      position: {x: -0.100885354, y: 0.054179695, z: -0.029529192}
+      rotation: {x: 0.1463346, y: -0.959028, z: 0.23243195, w: 0.06947603}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Izdihar_Rig_Belt2
+      parentName: Izdihar_Rig_Belt1
+      position: {x: -0.115904875, y: 0.0013988685, z: -0.0032389031}
+      rotation: {x: -0.000000066123896, y: -0.006718605, z: 0.000000014901159, w: 0.9999774}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000004}
+    - name: Izdihar_Rig_Belt3
+      parentName: Izdihar_Rig_Belt2
+      position: {x: -0.094871506, y: -0.0083838245, z: -0.0056829695}
+      rotation: {x: -0.00000005298092, y: 0.006830846, z: 8.080065e-10, w: 0.9999767}
+      scale: {x: 1.0000002, y: 1, z: 1.0000001}
+    - name: Izdihar_Rig_Belt4
+      parentName: Izdihar_Rig_Belt3
+      position: {x: -0.099317186, y: -0.02232882, z: -0.008329618}
+      rotation: {x: 0.00000008087907, y: -0.7095783, z: -0.000000035474358, w: 0.7046267}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000004}
+    - name: Izdihar_Rig_Spine1
+      parentName: Izdihar_Rig_Spine
+      position: {x: -0.11165125, y: 0.000000008662945, z: 0.000000038554422}
+      rotation: {x: -0.00000003078738, y: -0.000000028783575, z: 0.0010728166, w: -0.99999946}
+      scale: {x: 1.0000011, y: 1.000001, z: 1.0000006}
+    - name: Izdihar_Rig_Spine2
+      parentName: Izdihar_Rig_Spine1
+      position: {x: -0.09137481, y: -0.0000000012061236, z: 0.000000008583761}
+      rotation: {x: -0.000000031554844, y: -0.000000027940095, z: 0.028127162, w: 0.9996044}
+      scale: {x: 1.0000014, y: 1.0000005, z: 1.0000012}
+    - name: Izdihar_Rig_RightShoulder
+      parentName: Izdihar_Rig_Spine2
+      position: {x: -0.08183311, y: -0.031015784, z: -0.050890993}
+      rotation: {x: 0.38725343, y: 0.45117244, z: -0.60106546, w: 0.5340399}
+      scale: {x: 1.0000011, y: 1.0000051, z: 1.000006}
+    - name: Izdihar_Rig_RightArm
+      parentName: Izdihar_Rig_RightShoulder
+      position: {x: 0.08578925, y: -0.000000028442546, z: 0.000000023135202}
+      rotation: {x: -0.5711398, y: -0.1854761, z: 0.009465057, w: -0.79956764}
+      scale: {x: 1.0000013, y: 1, z: 0.9999997}
+    - name: Izdihar_Rig_RightForeArm
+      parentName: Izdihar_Rig_RightArm
+      position: {x: 0.17646104, y: -0.0000060327316, z: 0.000009278314}
+      rotation: {x: -0.0025408857, y: -0.023011336, z: -0.039527852, w: 0.99895024}
+      scale: {x: 1.0000002, y: 1.0000007, z: 1.0000004}
+    - name: Izdihar_Rig_RightHand
+      parentName: Izdihar_Rig_RightForeArm
+      position: {x: 0.15889306, y: 0.0000003181889, z: 0.00000006388603}
+      rotation: {x: -0.00000006397748, y: -0.00000006880144, z: 0.000030451834, w: 1}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000007}
+    - name: Izdihar_Rig_LeftShoulder
+      parentName: Izdihar_Rig_Spine2
+      position: {x: -0.081833124, y: -0.031015776, z: 0.050891016}
+      rotation: {x: -0.45117238, y: 0.38725305, z: 0.53404, w: 0.6010657}
+      scale: {x: 1.0000013, y: 1.0000015, z: 1.0000004}
+    - name: Izdihar_Rig_LeftArm
+      parentName: Izdihar_Rig_LeftShoulder
+      position: {x: -0.08578934, y: 0.00000006376509, z: 0.000000009452975}
+      rotation: {x: 0.57114404, y: 0.18547487, z: -0.009466108, w: 0.79956484}
+      scale: {x: 1.0000005, y: 1, z: 0.9999997}
+    - name: Izdihar_Rig_LeftForeArm
+      parentName: Izdihar_Rig_LeftArm
+      position: {x: -0.17646103, y: 0.00000702298, z: -0.00000858366}
+      rotation: {x: -0.0025406769, y: -0.023008145, z: -0.03952936, w: 0.99895024}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000002}
+    - name: Izdihar_Rig_LeftHand
+      parentName: Izdihar_Rig_LeftForeArm
+      position: {x: -0.15889293, y: -0.000000382396, z: -0.00000012381932}
+      rotation: {x: -0.000000014319083, y: 0.00000002654269, z: 0.000030459532, w: 1}
+      scale: {x: 1.0000001, y: 1.0000005, z: 1.0000004}
+    - name: Izdihar_Rig_Neck
+      parentName: Izdihar_Rig_Spine2
+      position: {x: -0.14972557, y: -0.000000007284629, z: 0.0000000352546}
+      rotation: {x: 3.5527128e-15, y: 1.7763564e-15, z: -0.1662205, w: 0.9860886}
+      scale: {x: 1.0000021, y: 1.000003, z: 1.000001}
+    - name: Izdihar_Rig_Head
+      parentName: Izdihar_Rig_Neck
+      position: {x: -0.12494825, y: -0.000000019733234, z: -0.0000000070794672}
+      rotation: {x: -0, y: -1.05879093e-22, z: -0.000000014901158, w: 1}
+      scale: {x: 1.0000011, y: 1.0000006, z: 1.0000001}
+    - name: Izdihar_Rig_Hair1
+      parentName: Izdihar_Rig_Head
+      position: {x: 0.073668845, y: -0.13105212, z: -0.02199484}
+      rotation: {x: 6.1301405e-16, y: -6.184792e-17, z: 0.9964205, w: 0.08453574}
+      scale: {x: 1.0000021, y: 1.0000019, z: 1.0000011}
+    - name: Izdihar_Rig_Hair2
+      parentName: Izdihar_Rig_Hair1
+      position: {x: -0.13791297, y: 1.7763568e-17, z: -6.1245664e-17}
+      rotation: {x: 0.000000023604422, y: 0.000000034916873, z: 0.08943655, w: 0.9959926}
+      scale: {x: 1.000001, y: 1.0000011, z: 1.000001}
+    - name: Izdihar_Rig_Hair3
+      parentName: Izdihar_Rig_Hair2
+      position: {x: -0.14569922, y: -7.105427e-17, z: -5.790467e-17}
+      rotation: {x: -0.0000000014898515, y: 0.0000000012734948, z: 0.04649059, w: 0.9989187}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000002}
+    - name: Izdihar_Rig_Hair4
+      parentName: Izdihar_Rig_Hair3
+      position: {x: -0.13851805, y: 0.013358388, z: -5.1332384e-17}
+      rotation: {x: -0.00000002619904, y: -0.00000006140595, z: -0.009155093, w: 0.9999581}
+      scale: {x: 1.002843, y: 1.0000001, z: 1.0000001}
+    - name: Izdihar_Rig_Hair5
+      parentName: Izdihar_Rig_Hair4
+      position: {x: -0.121979214, y: 0.0055071604, z: -5.749374e-17}
+      rotation: {x: 0.00085751194, y: 0.014373005, z: -0.017694784, w: 0.99973977}
+      scale: {x: 1.0000032, y: 0.9999971, z: 1.0000006}
+    - name: Izdihar_Rig_Hair6
+      parentName: Izdihar_Rig_Hair5
+      position: {x: -0.07668981, y: -1.5099033e-16, z: -2.6906642e-17}
+      rotation: {x: 0.46476337, y: 0.53291184, z: -0.46476337, w: 0.53291184}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: d6adb7ee8aadd244789477326a817df1, type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
