@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Tiles
 {
     public class RotatingTileGroup : TileGroup
     {
-        [SerializeField] private Dictionary<CardinalDirection, List<DynamicNeighborTile>> _endTiles = new();
+        [SerializeField] private Dictionary<CardinalDirection, DynamicNeighbourTileContainer> _endTiles = new();
         [SerializeField] private Transform _pivotPoint;
         [SerializeField] private Vector3 _rotation;
         [SerializeField] private float _automaticRotationDuration = 0.5f;
@@ -75,7 +76,7 @@ namespace Tiles
             CardinalDirection newCardinalDirection = GetClosestCardinalDirection();
             Vector3 targetValue = _rotation * _rotationAngles[newCardinalDirection];
 
-            _rotationTween = _pivotPoint.DORotate(targetValue, tweenSpeed).OnComplete(() => { SetCurrentDirection(newCardinalDirection); });
+            _rotationTween = _pivotPoint.DOLocalRotate(targetValue, tweenSpeed).OnComplete(() => { SetCurrentDirection(newCardinalDirection); });
         }
 
         private void SetCurrentDirection(CardinalDirection newCardinalDirection)
@@ -87,20 +88,22 @@ namespace Tiles
 
             foreach (Tile tile in _tiles)
             {
-                Vector3 rotationAngle = _rotation * _rotationAngles[_currentDirection];
+                Vector3 rotationAngle = _pivotPoint.eulerAngles * -1;
                 tile.transform.DOLocalRotate(rotationAngle, 0);
             }
 
             GameCore.Instance.RefreshTilesNeighbours();
 
+            foreach (Tile tile in _tiles)
+                tile.FindNeighbours();
+
             if (_endTiles.Count <= 0) 
                 return;
             
-            if (!_endTiles.TryGetValue(_currentDirection, out List<DynamicNeighborTile> dynamicNeighborTiles)) 
+            if (!_endTiles.TryGetValue(_currentDirection, out DynamicNeighbourTileContainer dynamicNeighborTiles)) 
                 return;
                 
-            foreach (DynamicNeighborTile tile in dynamicNeighborTiles)
-                tile.SetNeighbourTile();
+            dynamicNeighborTiles.Turn();
         }
 
         #endregion // ROTATION
@@ -147,10 +150,24 @@ namespace Tiles
             return cardinalDirection;
         }
 
-
         private void OnDestroy()
         {
             Destroy();
+        }
+    }
+    
+    [Serializable]
+    public class DynamicNeighbourTileContainer
+    {
+        [SerializeField] private UnityEvent _turnEvent; 
+        [SerializeField] private List<DynamicNeighborTile> _tiles = new List<DynamicNeighborTile>();
+        
+        public void Turn()
+        {
+            foreach (DynamicNeighborTile tile in _tiles)
+                tile.SetNeighbourTile();
+            
+            _turnEvent?.Invoke();
         }
     }
 

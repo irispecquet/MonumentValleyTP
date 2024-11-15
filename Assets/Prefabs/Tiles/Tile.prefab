@@ -87,7 +87,7 @@ MonoBehaviour:
   _highlightedMaterial: {fileID: 2100000, guid: 5aa8b44810708984a939caf5e201ec84, type: 2}
   _playerPosition: {fileID: 8252528971179600747}
   _playerLookAt: {fileID: 2606634566122912675}
-  _collider: {fileID: 0}
+  _collider: {fileID: 1335745412414949208}
   _chooseNeighbours: 0
   _isFinalTile: 0
 --- !u!65 &1335745412414949208

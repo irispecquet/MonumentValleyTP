@@ -32,14 +32,15 @@ public class Tile : SerializedMonoBehaviour
     public Transform PlayerPosition => _playerPosition;
     public Dictionary<Vector3, Tile> Neighbours => _neighbours;
     public Transform PlayerLookAt => _playerLookAt;
-
     private Material _initTileMaterial;
     private Dictionary<Vector3, Tile> _neighbours;
+    private Vector3 _initialPlayerLookAtPosition;
 
     #endregion // VARIABLES
 
     private void Awake()
     {
+        _initialPlayerLookAtPosition = _playerLookAt.localPosition;
         FindNeighbours();
         SetLadder();
         _initTileMaterial = _meshRenderers[0].sharedMaterial;
@@ -91,7 +92,7 @@ public class Tile : SerializedMonoBehaviour
         
         StringBuilder sb = new();
         foreach ((Vector3 dir, Tile neighbour) in _neighbours)
-            sb.Append($"- {dir} : {neighbour}\n");
+            sb.Append($"{gameObject.name} - {dir} : {neighbour}\n");
         Debug.Log(sb.ToString(), gameObject);
     }
 
@@ -138,6 +139,16 @@ public class Tile : SerializedMonoBehaviour
 
     private Tween _punchPositionTween;
 
+    public void ChangePlayerLookAtPosition(Transform position)
+    {
+        _playerLookAt.localPosition = position.position;
+    }
+    
+    public void ResetPlayerLookAtPosition()
+    {
+        _playerLookAt.localPosition = _initialPlayerLookAtPosition;
+    }
+    
     private void OnMouseDown()
     {
         GameCore.Instance.Player.BeginMove(this);
