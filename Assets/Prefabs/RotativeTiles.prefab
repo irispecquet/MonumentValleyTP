@@ -238,33 +238,10 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes:
     - Name: _endTiles
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[Tiles.CardinalDirection, Assembly-CSharp],[System.Collections.Generic.List`1[[Tiles.DynamicNeighborTile,
-        Assembly-CSharp]], mscorlib]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[Tiles.CardinalDirection,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
+      Entry: 6
       Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-  _draggingCollider: {fileID: 0}
-  _speed: 0
+  _draggingCollider: {fileID: 8137349003472894739}
+  _speed: 80
   _pivotPoint: {fileID: 1440480676829709201}
   _rotation: {x: 0, y: 0, z: 0}
   _automaticRotationDuration: 0.5

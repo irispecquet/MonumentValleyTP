@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -7,9 +8,12 @@ namespace Tiles
 {
     public class MovingTileGroup : TileGroup
     {
+        [SerializeField] private Tile[] _tilesToRefresh;
         [SerializeField] private Vector3 _movingDirection;
         [SerializeField] private float _rayCollisionDistance;
+        [SerializeField] private bool _showRayDebug;
         [SerializeField] private List<Vector3> _snapPositions = new List<Vector3>();
+        [SerializeField] private LayerMask _collideAgainstLayer;
 
         private bool _isMoving;
         private Tile _occupiedTile;
@@ -25,7 +29,11 @@ namespace Tiles
             _initialMousePosition = mousePosition;
             _isMoving = true;
             
-            _occupiedTile = GetOccupiedTile();
+            foreach (Tile tile in _tiles)
+            {
+                if (tile.IsOccupied)
+                    _occupiedTile = tile;
+            }
         }
 
         protected override void OnToolClick(Vector3 mousePosition)
@@ -38,7 +46,10 @@ namespace Tiles
             Vector3 moveDirection = targetPosition - transform.position;
             float distance = moveDirection.magnitude;
 
-            if (!Physics.Raycast(transform.position, moveDirection.normalized, distance + _rayCollisionDistance))
+            if(_showRayDebug)
+                Debug.DrawLine(transform.position, transform.position + moveDirection.normalized * (distance + _rayCollisionDistance), Color.red);
+            
+            if (!Physics.Raycast(transform.position, moveDirection.normalized, distance + _rayCollisionDistance, _collideAgainstLayer))
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, _speed * Time.deltaTime);
         }
 
@@ -61,12 +72,14 @@ namespace Tiles
 
             transform.DOMove(GetClosestPosition(transform.position), 0.2f).OnComplete(() =>
             {
-                GameCore.Instance.RefreshTilesNeighbours();
-                
                 foreach (Tile tile in _tiles)
                     tile.FindNeighbours();
 
+                foreach (Tile tile in _tilesToRefresh)
+                    tile.FindNeighbours();
+
                 _isMoving = false;
+                _occupiedTile = null;
             });
         }
 
@@ -76,17 +89,6 @@ namespace Tiles
                 GameCore.Instance.Player.transform.position = _occupiedTile.PlayerPosition.position;
         }
 
-        private Tile GetOccupiedTile()
-        {
-            foreach (Tile tile in _tiles)
-            {
-                if (tile.IsOccupied)
-                    return tile;
-            }
-            
-            return null;
-        }
-        
         [Button]
         public void AddSnappingPosition()
         {

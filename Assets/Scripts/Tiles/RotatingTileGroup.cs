@@ -92,8 +92,6 @@ namespace Tiles
                 tile.transform.DOLocalRotate(rotationAngle, 0);
             }
 
-            GameCore.Instance.RefreshTilesNeighbours();
-
             foreach (Tile tile in _tiles)
                 tile.FindNeighbours();
 

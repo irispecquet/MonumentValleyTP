@@ -36,13 +36,11 @@ public class Tile : SerializedMonoBehaviour
     public Transform PlayerLookAt => _playerLookAt;
     private Material _initTileMaterial;
     private Dictionary<Vector3, Tile> _neighbours;
-    private Vector3 _initialPlayerLookAtPosition;
 
     #endregion // VARIABLES
 
     private void Awake()
     {
-        _initialPlayerLookAtPosition = _playerLookAt.localPosition;
         FindNeighbours();
         _initTileMaterial = _meshRenderers[0].sharedMaterial;
     }
@@ -50,7 +48,7 @@ public class Tile : SerializedMonoBehaviour
     public void OnBeingCurrentTile(bool isCurrent)
     {
         IsOccupied = isCurrent;
-
+        
         foreach (MeshRenderer mesh in _meshRenderers)
             mesh.sharedMaterial = isCurrent ? _highlightedMaterial : _initTileMaterial;
         
@@ -113,9 +111,9 @@ public class Tile : SerializedMonoBehaviour
 
     private Vector3[] GetDirections()
     {
-        Vector3 forward = transform.forward;
-        Vector3 right = transform.right;
-        Vector3 up = transform.up;
+        Vector3 forward = Vector3.forward;
+        Vector3 right = Vector3.right;
+        Vector3 up = Vector3.up;
         
         Vector3[] directions =
         {
@@ -133,23 +131,13 @@ public class Tile : SerializedMonoBehaviour
     #endregion // NEIGHBOURS
 
     private Tween _punchPositionTween;
-
-    public void ChangePlayerLookAtPosition(Transform position)
-    {
-        _playerLookAt.position = position.position;
-    }
-    
-    public void ResetPlayerLookAtPosition()
-    {
-        _playerLookAt.localPosition = _initialPlayerLookAtPosition;
-    }
     
     private void OnMouseDown()
     {
         GameCore.Instance.Player.BeginMove(this);
 
         _punchPositionTween?.Complete();
-        _punchPositionTween = transform.DOPunchPosition(Vector3.up * -_punchPositionForce, _punchPositionDuration, 0, 0);
+        _punchPositionTween = transform.DOPunchScale(Vector3.one * _punchPositionForce, _punchPositionDuration, 0, 0);
     }
 
     private void OnDrawGizmos()

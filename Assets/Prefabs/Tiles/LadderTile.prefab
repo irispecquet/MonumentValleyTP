@@ -288,7 +288,7 @@ MonoBehaviour:
   _collider: {fileID: 7723653693309845511}
   _chooseNeighbours: 0
   _isFinalTile: 0
-  _isLadder: 0
+  _isLadder: 1
 --- !u!65 &7723653693309845511
 BoxCollider:
   m_ObjectHideFlags: 0

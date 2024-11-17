@@ -13,7 +13,7 @@ namespace Tiles
         protected Vector3 _initialMousePosition;
         protected bool _isDragging;
 
-        protected void Initialize()
+        protected virtual void Initialize()
         {
             _tiles = new List<Tile>(GetComponentsInChildren<Tile>());
             
@@ -25,7 +25,7 @@ namespace Tiles
             }
         }
 
-        protected void Destroy()
+        protected virtual void Destroy()
         {
             if (_draggingCollider != null)
             {
