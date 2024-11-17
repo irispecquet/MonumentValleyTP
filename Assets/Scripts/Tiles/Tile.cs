@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DG.Tweening;
+using Gameplay;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -34,6 +35,8 @@ public class Tile : SerializedMonoBehaviour
     public Transform PlayerPosition => _playerPosition;
     public Dictionary<Vector3, Tile> Neighbours => _neighbours;
     public Transform PlayerLookAt => _playerLookAt;
+    public bool PlayerTurn { get; private set; } = true;
+
     private Material _initTileMaterial;
     private Dictionary<Vector3, Tile> _neighbours;
 
@@ -82,11 +85,6 @@ public class Tile : SerializedMonoBehaviour
                 _neighbours.TryAdd(direction, tile);
             }
         }
-        
-        StringBuilder sb = new();
-        foreach ((Vector3 dir, Tile neighbour) in _neighbours)
-            sb.Append($"{gameObject.name} - {dir} : {neighbour}\n");
-        Debug.Log(sb.ToString(), gameObject);
     }
 
     private bool TryFindNeighbour(Vector3 direction, out RaycastHit hit)
@@ -138,6 +136,11 @@ public class Tile : SerializedMonoBehaviour
 
         _punchPositionTween?.Complete();
         _punchPositionTween = transform.DOPunchScale(Vector3.one * _punchPositionForce, _punchPositionDuration, 0, 0);
+    }
+
+    public void ChangePlayerTurnVar(bool turn)
+    {
+        PlayerTurn = turn;
     }
 
     private void OnDrawGizmos()

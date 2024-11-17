@@ -111,7 +111,7 @@ MonoBehaviour:
       Data: 
   _horizontalNeighbourRayLength: 0.6
   _verticalNeighbourRayLength: 0.6
-  _punchPositionForce: 0.15
+  _punchPositionForce: 0.1
   _punchPositionDuration: 0.2
   _meshRenderers:
   - {fileID: 5556293114691318129}
