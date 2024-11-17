@@ -9,9 +9,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField, FoldoutGroup("References")]
-    private Animator _animator;
-
+    [SerializeField, FoldoutGroup("References")] private Animator _animator;
     [SerializeField] private bool _snapPlayerToTile;
     [SerializeField] private float _downRayDistance;
     [SerializeField] private float _forwardRayDistance;

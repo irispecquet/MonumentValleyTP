@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d4f2f55e197295e44afbef12a826b686, type: 2}
+  - {fileID: 2100000, guid: 5aa8b44810708984a939caf5e201ec84, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -175,7 +175,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d4f2f55e197295e44afbef12a826b686, type: 2}
+  - {fileID: 2100000, guid: 5aa8b44810708984a939caf5e201ec84, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -282,11 +282,13 @@ MonoBehaviour:
   _meshRenderers:
   - {fileID: 7632634150961302246}
   _neighbourDetectionTransform: {fileID: 7793890189335764591}
-  _highlightedMaterial: {fileID: 2100000, guid: 81c06ec9ce7ff7349a91704ef066132a, type: 2}
+  _highlightedMaterial: {fileID: 2100000, guid: 219db25391b0dc246bad210679ae8d6f, type: 2}
   _playerPosition: {fileID: 7944135826607082794}
   _playerLookAt: {fileID: 4006209221033137675}
   _collider: {fileID: 7723653693309845511}
   _chooseNeighbours: 0
+  _isFinalTile: 0
+  _isLadder: 0
 --- !u!65 &7723653693309845511
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -434,7 +436,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d4f2f55e197295e44afbef12a826b686, type: 2}
+  - {fileID: 2100000, guid: 5aa8b44810708984a939caf5e201ec84, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -517,7 +519,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3bbe621ad195bfc47902e84935ad4019, type: 2}
+  - {fileID: 2100000, guid: 8650dfcc7ad52e04580f4e50f34d8a37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

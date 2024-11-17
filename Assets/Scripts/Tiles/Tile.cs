@@ -4,6 +4,7 @@ using System.Text;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Tile : SerializedMonoBehaviour
 {
@@ -26,8 +27,9 @@ public class Tile : SerializedMonoBehaviour
      Tooltip("If you want to attribute specific neighbours to specific directions, you can do it here. All the null values will be filled automatically.")]
     private Dictionary<Vector3, Tile> _specificInitNeighbours = new();
     [SerializeField, Space] private bool _isFinalTile;
+    [SerializeField] private bool _isLadder;
 
-    public bool IsLadder { get; private set; }
+    public bool IsLadder => _isLadder;
     public bool IsOccupied { get; private set; }
     public Transform PlayerPosition => _playerPosition;
     public Dictionary<Vector3, Tile> Neighbours => _neighbours;
@@ -42,14 +44,7 @@ public class Tile : SerializedMonoBehaviour
     {
         _initialPlayerLookAtPosition = _playerLookAt.localPosition;
         FindNeighbours();
-        SetLadder();
         _initTileMaterial = _meshRenderers[0].sharedMaterial;
-    }
-
-    private void SetLadder()
-    {
-        if(_neighbours.TryGetValue(Vector3.up, out _))
-            IsLadder = true;
     }
 
     public void OnBeingCurrentTile(bool isCurrent)
@@ -141,7 +136,7 @@ public class Tile : SerializedMonoBehaviour
 
     public void ChangePlayerLookAtPosition(Transform position)
     {
-        _playerLookAt.localPosition = position.position;
+        _playerLookAt.position = position.position;
     }
     
     public void ResetPlayerLookAtPosition()
