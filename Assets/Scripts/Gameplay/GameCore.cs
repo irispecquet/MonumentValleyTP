@@ -1,10 +1,17 @@
+using JetBrains.Annotations;
+using LuniLiiiib.UnityUtils;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Gameplay
 {
     public class GameCore : MonoBehaviour
     {
         public static GameCore Instance;
+
+        [SerializeField, CanBeNull] private SceneField _nextLevelScene;
+        [SerializeField, CanBeNull] private GameObject _endGamePanel;
+        [SerializeField] private Fade _fade;
     
         [field:SerializeField] public PlayerController Player {get; private set;}
 
@@ -16,9 +23,20 @@ namespace Gameplay
                 Instance = this;
         }
 
-        public void EndGame()
+        private void Start()
         {
-            Debug.Log("You won");
+            _fade.FadeOut();
+        }
+
+        public void GoToNextLevel()
+        {
+            _fade.FadeIn(() =>
+            {
+                if(string.IsNullOrEmpty(_nextLevelScene.SceneName))
+                    _endGamePanel.SetActive(true);
+                else
+                    SceneManager.LoadScene(_nextLevelScene);
+            });
         }
     }
 }

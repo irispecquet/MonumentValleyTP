@@ -56,7 +56,7 @@ public class Tile : SerializedMonoBehaviour
             mesh.sharedMaterial = isCurrent ? _highlightedMaterial : _initTileMaterial;
         
         if(_isFinalTile)
-            GameCore.Instance.EndGame();
+            GameCore.Instance.GoToNextLevel();
     }
 
     public void ChangeMaterial(Material material)
@@ -143,7 +143,7 @@ public class Tile : SerializedMonoBehaviour
         PlayerTurn = turn;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
         Vector3[] directions = GetDirections();
