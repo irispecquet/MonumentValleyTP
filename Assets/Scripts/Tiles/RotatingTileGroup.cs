@@ -50,7 +50,7 @@ namespace Tiles
 
         protected override void OnToolEndClick()
         {
-            EndRotation(_automaticRotationDuration);
+            EndRotation();
             _isDragging = false;
         }
 
@@ -69,14 +69,14 @@ namespace Tiles
             _initialMousePosition = currentMousePosition;
         }
 
-        private void EndRotation(float tweenSpeed)
+        private void EndRotation()
         {
             _rotationTween?.Complete();
             
             CardinalDirection newCardinalDirection = GetClosestCardinalDirection();
             Vector3 targetValue = _rotation * _rotationAngles[newCardinalDirection];
 
-            _rotationTween = _pivotPoint.DOLocalRotate(targetValue, tweenSpeed).OnComplete(() => { SetCurrentDirection(newCardinalDirection); });
+            _rotationTween = _pivotPoint.DOLocalRotate(targetValue, _automaticRotationDuration).OnComplete(() => { SetCurrentDirection(newCardinalDirection); });
         }
 
         private void SetCurrentDirection(CardinalDirection newCardinalDirection)
@@ -104,10 +104,31 @@ namespace Tiles
             dynamicNeighborTiles.Turn();
         }
 
+        public void Turn(bool clockwise)
+        {
+            _rotationTween?.Complete();
+            
+            CardinalDirection newCardinalDirection;
+            CardinalDirection[] directionValues = (CardinalDirection[])Enum.GetValues(typeof(CardinalDirection));
+            
+            if (clockwise)
+            {
+                newCardinalDirection = (CardinalDirection)(((int)_currentDirection + 1) % directionValues.Length);
+            }
+            else
+            {
+                int newDirectionIndex = ((int)_currentDirection - 1 + directionValues.Length) % directionValues.Length;
+                newCardinalDirection = (CardinalDirection)newDirectionIndex;
+            }
+
+            Vector3 targetValue = _rotation * _rotationAngles[newCardinalDirection];
+            _rotationTween = _pivotPoint.DOLocalRotate(targetValue, _automaticRotationDuration).OnComplete(() => { SetCurrentDirection(newCardinalDirection); });
+        }
+
         #endregion // ROTATION
 
         [Button]
-        public void RotateClockwise()
+        public void RotateClockwiseInEditor()
         {
             _pivotPoint.Rotate(_rotation, 90);
         }
@@ -122,7 +143,7 @@ namespace Tiles
 
             return true;
         }
-
+        
         private CardinalDirection GetClosestCardinalDirection()
         {
             float currentAngle = 0;

@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
-using System.Text;
 using DG.Tweening;
 using Gameplay;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.Events;
 
 public class Tile : SerializedMonoBehaviour
 {
@@ -29,6 +27,9 @@ public class Tile : SerializedMonoBehaviour
     private Dictionary<Vector3, Tile> _specificInitNeighbours = new();
     [SerializeField, Space] private bool _isFinalTile;
     [SerializeField] private bool _isLadder;
+    [SerializeField] private bool _triggerInteraction;
+    
+    [ShowIf(nameof(_triggerInteraction))] public UnityEvent TileTriggeredEvent;
 
     public bool IsLadder => _isLadder;
     public bool IsOccupied { get; private set; }
@@ -39,6 +40,7 @@ public class Tile : SerializedMonoBehaviour
 
     private Material _initTileMaterial;
     private Dictionary<Vector3, Tile> _neighbours;
+    private bool _hasTriggeredEvent;
 
     #endregion // VARIABLES
 
@@ -57,6 +59,12 @@ public class Tile : SerializedMonoBehaviour
         
         if(_isFinalTile)
             GameCore.Instance.GoToNextLevel();
+
+        if (_triggerInteraction && !_hasTriggeredEvent)
+        {
+            TileTriggeredEvent?.Invoke();
+            _hasTriggeredEvent = true;
+        }
     }
 
     public void ChangeMaterial(Material material)

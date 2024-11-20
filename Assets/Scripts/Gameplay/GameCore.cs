@@ -1,7 +1,5 @@
 using JetBrains.Annotations;
-using LuniLiiiib.UnityUtils;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Gameplay
 {
@@ -9,9 +7,10 @@ namespace Gameplay
     {
         public static GameCore Instance;
 
-        [SerializeField, CanBeNull] private SceneField _nextLevelScene;
+        [SerializeField] private LevelManager _levelManager;
         [SerializeField, CanBeNull] private GameObject _endGamePanel;
         [SerializeField] private Fade _fade;
+        [SerializeField] private int _startingLevelIndex;
     
         [field:SerializeField] public PlayerController Player {get; private set;}
 
@@ -26,16 +25,16 @@ namespace Gameplay
         private void Start()
         {
             _fade.FadeOut();
+            
+            _levelManager.Init(_startingLevelIndex, Player);
         }
 
         public void GoToNextLevel()
         {
             _fade.FadeIn(() =>
             {
-                if(string.IsNullOrEmpty(_nextLevelScene.SceneName))
-                    _endGamePanel.SetActive(true);
-                else
-                    SceneManager.LoadScene(_nextLevelScene);
+                if (!_levelManager.TryLaunchNextLevel())
+                    _endGamePanel?.SetActive(true);
             });
         }
     }
