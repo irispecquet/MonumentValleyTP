@@ -12,17 +12,17 @@ namespace Gameplay
 
         private Tween _fadeTween;
 
-        private void FadeImage(Action action, int alpha)
+        private void FadeImage(Action onCompleteAction, int alpha)
         {
             _fadeTween?.Kill();
             _fadeTween = _image.DOFade(alpha, _fadeSpeed).OnComplete(() =>
             {
                 _image.raycastTarget = alpha == 1;
-                action?.Invoke();
+                onCompleteAction?.Invoke();
             });
         }
         
-        public void FadeOut(Action action = null) => FadeImage(action, 0);
-        public void FadeIn(Action action = null) => FadeImage(action, 1);
+        public void FadeOut(Action onCompleteAction = null) => FadeImage(onCompleteAction, 0);
+        public void FadeIn(Action onCompleteAction = null) => FadeImage(onCompleteAction, 1);
     }
 }

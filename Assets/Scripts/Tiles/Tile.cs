@@ -40,7 +40,8 @@ public class Tile : SerializedMonoBehaviour
 
     private Material _initTileMaterial;
     private Dictionary<Vector3, Tile> _neighbours;
-    private bool _hasTriggeredEvent;
+    private bool _hasTriggeredEvent = false;
+    private bool _hasTriggerNextLevel = false;
 
     #endregion // VARIABLES
 
@@ -56,9 +57,12 @@ public class Tile : SerializedMonoBehaviour
         
         foreach (MeshRenderer mesh in _meshRenderers)
             mesh.sharedMaterial = isCurrent ? _highlightedMaterial : _initTileMaterial;
-        
-        if(_isFinalTile)
+
+        if (_isFinalTile && !_hasTriggerNextLevel)
+        {
             GameCore.Instance.GoToNextLevel();
+            _hasTriggerNextLevel = true;
+        }
 
         if (_triggerInteraction && !_hasTriggeredEvent)
         {

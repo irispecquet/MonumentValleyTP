@@ -35,6 +35,8 @@ namespace Gameplay
             {
                 if (!_levelManager.TryLaunchNextLevel())
                     _endGamePanel?.SetActive(true);
+                else
+                    _fade.FadeOut();
             });
         }
     }
