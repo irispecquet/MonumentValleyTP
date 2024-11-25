@@ -35,6 +35,9 @@ namespace Tiles
                 if (tile.IsOccupied)
                     _occupiedTile = tile;
             }
+
+            if (_occupiedTile != null)
+                GameCore.Instance.Player.transform.parent = gameObject.transform;
         }
 
         protected override void OnToolClick(Vector3 mousePosition)
@@ -81,19 +84,32 @@ namespace Tiles
 
                 _isMoving = false;
                 _occupiedTile = null;
+                
+                GameCore.Instance.Player.transform.parent = null;
             });
         }
-
-        private void Update()
-        {
-            if (_isMoving && _occupiedTile != null)
-                GameCore.Instance.Player.transform.position = _occupiedTile.PlayerPosition.position;
-        }
-
+        
         [Button]
         public void AddSnappingPosition()
         {
            _snapPositions.Add(transform.position);
+        }
+        
+                
+        [Button]
+        public void AddAllSnappingPositions(int multiplier)
+        {
+            _snapPositions.Clear();
+            
+            for (int i = 0; i < multiplier; i++)
+                _snapPositions.Add(transform.position + _movingDirection * i);
+        }
+        
+        [Button]
+        public void MoveToSnappedPosition(int index)
+        {
+            if(_snapPositions.Count - 1 >= index)
+                transform.position = _snapPositions[index];     
         }
 
         private void OnDestroy()

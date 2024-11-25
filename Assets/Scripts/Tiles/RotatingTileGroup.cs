@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Gameplay;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,6 +13,8 @@ namespace Tiles
         [SerializeField] private Dictionary<CardinalDirection, DynamicNeighbourTileContainer> _endTiles = new();
         [SerializeField] private Transform _pivotPoint;
         [SerializeField] private Vector3 _rotation;
+        [SerializeField] private bool _canTurnWithPlayer = false;
+        [SerializeField] private bool _rotateTiles = true;
         [SerializeField] private float _automaticRotationDuration = 0.5f;
         
         private CardinalDirection _currentDirection;
@@ -36,6 +39,9 @@ namespace Tiles
         {
             if (!CanRotate())
                 return;
+            
+            if(TileIsOccupied())
+                GameCore.Instance.Player.transform.parent = _pivotPoint;
 
             _isDragging = true;
             _initialMousePosition = mousePosition;
@@ -76,7 +82,13 @@ namespace Tiles
             CardinalDirection newCardinalDirection = GetClosestCardinalDirection();
             Vector3 targetValue = _rotation * _rotationAngles[newCardinalDirection];
 
-            _rotationTween = _pivotPoint.DOLocalRotate(targetValue, _automaticRotationDuration).OnComplete(() => { SetCurrentDirection(newCardinalDirection); });
+            _rotationTween = _pivotPoint.DOLocalRotate(targetValue, _automaticRotationDuration).OnComplete(() =>
+            {
+                if (_canTurnWithPlayer)
+                    GameCore.Instance.Player.transform.parent = null;
+
+                SetCurrentDirection(newCardinalDirection);
+            });
         }
 
         private void SetCurrentDirection(CardinalDirection newCardinalDirection)
@@ -86,10 +98,13 @@ namespace Tiles
             
             _currentDirection = newCardinalDirection;
 
-            foreach (Tile tile in _tiles)
+            if (_rotateTiles)
             {
-                Vector3 rotationAngle = _pivotPoint.eulerAngles * -1;
-                tile.transform.DOLocalRotate(rotationAngle, 0);
+                foreach (Tile tile in _tiles)
+                {
+                    Vector3 rotationAngle = _pivotPoint.eulerAngles * -1;
+                    tile.transform.DOLocalRotate(rotationAngle, 0);
+                }
             }
 
             foreach (Tile tile in _tiles)
@@ -135,15 +150,26 @@ namespace Tiles
 
         private bool CanRotate()
         {
-            foreach (Tile tile in _tiles)
-            {
-                if (tile.IsOccupied)
-                    return false;
-            }
+            if (_canTurnWithPlayer)
+                return true;
+                
+            if (TileIsOccupied()) 
+                return false;
 
             return true;
         }
-        
+
+        private bool TileIsOccupied()
+        {
+            foreach (Tile tile in _tiles)
+            {
+                if (tile.IsOccupied)
+                    return true;
+            }
+
+            return false;
+        }
+
         private CardinalDirection GetClosestCardinalDirection()
         {
             float currentAngle = 0;
