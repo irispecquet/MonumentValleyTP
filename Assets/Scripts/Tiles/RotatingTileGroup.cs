@@ -179,12 +179,19 @@ namespace Tiles
     public class DynamicNeighbourTileContainer
     {
         [SerializeField] private UnityEvent _turnEvent; 
-        [SerializeField] private List<DynamicNeighborTile> _tiles = new List<DynamicNeighborTile>();
+        [SerializeField] private List<DynamicNeighborTile> _tiles = new();
+        [SerializeField] private List<Tile> _tilesToRefresh = new();
         
         public void Turn()
         {
             foreach (DynamicNeighborTile tile in _tiles)
                 tile.SetNeighbourTile();
+
+            if (_tilesToRefresh != null)
+            {
+                foreach (Tile tile in _tilesToRefresh)
+                    tile.FindNeighbours();
+            }
             
             _turnEvent?.Invoke();
         }
@@ -213,9 +220,9 @@ namespace Tiles
 
     public enum CardinalDirection
     {
-        North = 1 << 0,
-        East = 1 << 1,
-        South = 1 << 2,
-        West = 1 << 3
+        North = 0,
+        East = 1,
+        South = 2,
+        West = 3
     }
 }
